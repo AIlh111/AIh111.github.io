@@ -2,145 +2,61 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>动物世界图鉴</title>
-
-<style>
-body {
-  margin: 0;
-  font-family: "Microsoft YaHei", sans-serif;
-  background: #f5f7fa;
-}
-
-/* 顶部标题 */
-header {
-  background: #1e3a5f;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-
-/* 轮播 */
-.banner {
-  width: 100%;
-  height: 420px;
-  overflow: hidden;
-  position: relative;
-}
-
-.banner img {
-  width: 100%;
-  height: 420px;
-  object-fit: cover;
-  display: none;
-}
-
-.banner img.active {
-  display: block;
-}
-
-/* 介绍区 */
-.intro {
-  padding: 30px;
-  text-align: center;
-}
-
-.intro h2 {
-  color: #1e3a5f;
-}
-
-/* 分类导航 */
-.nav {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 30px;
-}
-
-.card {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card a {
-  text-decoration: none;
-  color: #1e3a5f;
-  font-weight: bold;
-}
-</style>
+<title>动物世界百科</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-  <h1>🌍 动物世界图鉴</h1>
+  <h1>🐾 动物世界百科</h1>
   <p>探索地球上的生命奇迹</p>
 </header>
 
-<!-- 轮播 -->
-<div class="banner">
-  <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" class="active">
-  <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2">
-  <img src="https://images.unsplash.com/photo-1501706362039-c06b2d715385">
-</div>
+<nav>
+  <a href="index.html">首页</a>
+  <a href="land.html">陆地动物</a>
+  <a href="sea.html">海洋动物</a>
+  <a href="bird.html">鸟类动物</a>
+  <a href="protect.html">动物保护</a>
+</nav>
 
-<!-- 地球动物简介 -->
-<div class="intro">
-  <h2>地球动物分布简介</h2>
-  <p>
-    地球上的动物分布在不同生态环境中，包括森林、草原、海洋、沙漠与极地。
-    每一种动物都在生态系统中扮演重要角色。
-  </p>
-</div>
+<section class="banner">
+  <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+</section>
 
-<!-- 分类导航 -->
-<div class="nav">
+<section class="intro">
+  <h2>🌍 地球动物世界</h2>
+  <p>动物生活在不同生态环境中：森林、草原、海洋、极地与沙漠。</p>
+</section>
+
+<section class="cards">
 
   <div class="card">
     <h3>🐘 陆地动物</h3>
-    <a href="#">进入专区</a>
+    <a href="land.html">进入</a>
   </div>
 
   <div class="card">
     <h3>🐋 海洋动物</h3>
-    <a href="#">进入专区</a>
+    <a href="sea.html">进入</a>
   </div>
 
   <div class="card">
     <h3>🦅 飞禽鸟类</h3>
-    <a href="#">进入专区</a>
+    <a href="bird.html">进入</a>
   </div>
 
   <div class="card">
-    <h3>🌍 濒危保护</h3>
-    <a href="#">进入专区</a>
+    <h3>🌱 动物保护</h3>
+    <a href="protect.html">进入</a>
   </div>
 
-  <div class="card">
-    <h3>📚 动物科普</h3>
-    <a href="#">进入专区</a>
-  </div>
+</section>
 
-</div>
-
-<script>
-// 简单轮播
-let imgs = document.querySelectorAll(".banner img");
-let index = 0;
-
-setInterval(() => {
-  imgs[index].classList.remove("active");
-  index = (index + 1) % imgs.length;
-  imgs[index].classList.add("active");
-}, 3000);
-</script>
+<footer>
+  <p>© 2026 动物世界百科</p>
+</footer>
 
 </body>
 </html>

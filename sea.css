@@ -1,8 +1,8 @@
 /*==================================================
                 海洋动物专区 sea.css
-                导航与首页统一版【修复bug完整版】
+                清理冗余完整版（删除所有function样式）
 ==================================================*/
-/* ========= 全局 ========= */
+/* ========= 全局通用样式 ========= */
 *{
     margin:0;
     padding:0;
@@ -20,7 +20,7 @@ body{
     overflow-x:hidden;
 }
 
-/* 全局图片重置，防止变形溢出 */
+/* 全局图片统一重置，防止变形溢出 */
 img{
     max-width:100%;
     display:block;
@@ -30,7 +30,7 @@ img:hover{
     transform:scale(1.02);
 }
 
-/* ========= 导航栏【和首页完全统一，修复权重+手机布局】 ========= */
+/* ========= 顶部导航栏（和首页样式完全统一） ========= */
 nav{
   position:fixed;
   top:0;
@@ -60,19 +60,17 @@ nav a{
 nav a:hover{
   color:#ffd700;
 }
-/* 优化选择器权重，去掉多余!important */
 nav a.active{
   color:#ffd700;
   font-weight:bold;
 }
 
-/* ========= Banner ========= */
+/* ========= 全屏横幅Banner ========= */
 .sea-banner{
     position:relative;
     width:100%;
     min-height:100vh;
     padding-top:80px;
-    /* 若github pages路径异常，可替换为网络图片兜底 */
     background:linear-gradient(rgba(0,0,0,.25),rgba(0,110,150,.35)),url("banner.jpg");
     background-size:cover;
     background-position:center;
@@ -89,7 +87,7 @@ nav a.active{
     z-index:1;
 }
 
-/* ========= Banner文字 ========= */
+/* Banner中间标题文字 */
 .banner-content{
     position:relative;
     z-index:2;
@@ -112,7 +110,7 @@ nav a.active{
     text-shadow:0 3px 10px rgba(0,0,0,.4);
 }
 
-/* ========= 分类卡片容器 ========= */
+/* 卡片外层容器 */
 .category-area{
     position:relative;
     z-index:2;
@@ -124,16 +122,12 @@ nav a.active{
     padding:20px 20px 80px;
 }
 
-/*========================================
-        四个分类玻璃卡片
-        优化兼容，删除冗余动画
-========================================*/
+/* 玻璃毛玻璃卡片样式 */
 .glass-card{
     width:270px;
     min-height:380px;
     padding:25px 20px;
     border-radius:22px;
-    /* 增加降级半透明白色，兼容不支持模糊的浏览器 */
     background:rgba(255,255,255,.25);
     border:1px solid rgba(255,255,255,.35);
     backdrop-filter:blur(15px);
@@ -171,7 +165,7 @@ nav a.active{
     min-height:75px;
 }
 
-/*========================== 按钮 ==========================*/
+/* 卡片内按钮 */
 .glass-card button{
     margin-top:18px;
     width:150px;
@@ -192,7 +186,7 @@ nav a.active{
     transform:scale(1.05);
 }
 
-/*========================== 卡片入场动画（仅保留一套） ==========================*/
+/* 卡片依次上浮入场动画 */
 @keyframes cardUp{
     from{
         opacity:0;
@@ -208,6 +202,7 @@ nav a.active{
 .glass-card:nth-child(3){animation:cardUp 1.2s ease;}
 .glass-card:nth-child(4){animation:cardUp 1.4s ease;}
 
+/* 卡片顶部装饰蓝线 */
 .glass-card::before{
     content:"";
     display:block;
@@ -218,6 +213,7 @@ nav a.active{
     border-radius:5px;
 }
 
+/* 卡片底部发光线条 */
 .glass-card::after{
     content:"";
     position:absolute;
@@ -230,9 +226,7 @@ nav a.active{
     filter:blur(2px);
 }
 
-/*========================================
-            海洋介绍区域
-========================================*/
+/* 海洋介绍板块 */
 .intro{
     width:100%;
     background:white;
@@ -260,9 +254,7 @@ nav a.active{
     line-height:36px;
 }
 
-/*========================================
-                页脚
-========================================*/
+/* 页面底部页脚 */
 footer{
     background:#103b63;
     color:white;
@@ -270,7 +262,7 @@ footer{
     padding:30px;
 }
 
-/* 返回顶部按钮 */
+/* 返回顶部悬浮按钮 */
 .top-btn{
     position:fixed;
     right:30px;
@@ -293,7 +285,7 @@ footer{
     transform:translateY(-6px);
 }
 
-/*========================== 多端自适应【修复手机导航间距bug】 ==========================*/
+/* ============ 多设备自适应媒体查询 ============ */
 /* 大屏电脑 */
 @media screen and (max-width:1200px){
     .category-area{gap:20px;}
@@ -306,12 +298,11 @@ footer{
     .glass-card{width:320px;}
     .intro{padding:60px 10%;}
 }
-/* 手机 - 修复导航垂直间距失效问题 */
+/* 手机端（已删除失效的function-box代码） */
 @media screen and (max-width:768px){
     nav{
         flex-direction:column;
         padding:15px;
-        /* 开启垂直布局下子元素间距生效 */
         display:flex;
         gap:12px;
     }
@@ -328,9 +319,8 @@ footer{
     .banner-content h1{font-size:40px;}
     .banner-content p{font-size:18px;line-height:30px;}
     .glass-card{width:90%;max-width:360px;}
-    .function-box{width:90%;}
 }
-/* 小屏手机 */
+/* 超小手机 */
 @media screen and (max-width:480px){
     .banner-content h1{font-size:32px;}
     .banner-content p{font-size:16px;}

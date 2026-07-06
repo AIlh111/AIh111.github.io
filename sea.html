@@ -2,32 +2,32 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <!-- 移动端适配关键标签 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>海洋动物百科</title>
-    <!-- 外部样式表 -->
     <link rel="stylesheet" href="sea.css">
 </head>
-<body>
-<!-- 导航栏 -->
-<header class="navbar">
-    <div class="logo">🌊 海洋动物百科</div>
-    <nav>
-        <a href="index.html" class="active">首页</a>
-        <a href="bird.html" class="active">鸟类动物</a>
-        <a href="land.html" class="active">陆地动物</a>
-        <a href="bird.html" class="active">保护</a>
-    </nav>
-</header>
 
-<!-- 全屏横幅 -->
+<body>
+<!-- 统一导航栏，和首页结构一致 -->
+<nav id="nav">
+  <div>🐾 动物百科</div>
+  <div>
+    <a href="index.html">首页</a>
+    <a href="land.html">陆地</a>
+    <a href="sea.html" class="active">海洋</a>
+    <a href="bird.html">鸟类</a>
+    <a href="protect.html">保护</a>
+  </div>
+</nav>
+
+<!-- =================== Banner =================== -->
 <section class="sea-banner">
     <div class="banner-mask"></div>
     <div class="banner-content">
         <h1>探索神秘海洋世界</h1>
         <p>了解深海生命，守护蓝色家园</p>
     </div>
-    <!-- 修正：卡片从绝对定位改为banner内部正常流式布局，不再压图片 -->
+
     <div class="category-area">
         <!-- 深海鱼类 -->
         <div class="glass-card">
@@ -60,14 +60,14 @@
     </div>
 </section>
 
-<!-- 海洋介绍板块 -->
+<!-- =================== 介绍 =================== -->
 <section class="intro">
     <h2>探索海洋生命</h2>
     <div class="line"></div>
     <p>海洋覆盖了地球约71%的面积，孕育着数百万种生命。从五彩缤纷的珊瑚礁，到神秘莫测的深海世界，每一种海洋动物都拥有独特的生存智慧。</p>
 </section>
 
-<!-- 功能模块 -->
+<!-- =================== 功能 =================== -->
 <section class="function-area">
     <div class="function-box">
         <span>🐢</span>
@@ -87,12 +87,22 @@
     </div>
 </section>
 
-<!-- 页脚 -->
 <footer>
     ©2026 海洋动物百科 Ocean Animal Encyclopedia
 </footer>
 
-<!-- 返回顶部 -->
 <a href="#" class="top-btn">↑</a>
+
+<!-- 导航滚动变色JS，和首页完全一致 -->
+<script>
+window.addEventListener("scroll",()=>{
+  let nav = document.getElementById("nav");
+  if(window.scrollY>50){
+    nav.classList.add("scrolled");
+  }else{
+    nav.classList.remove("scrolled");
+  }
+});
+</script>
 </body>
 </html>

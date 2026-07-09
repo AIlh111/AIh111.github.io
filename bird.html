@@ -3,95 +3,504 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>飞禽鸟类专区 | 动物世界科普网站</title>
+    <title>飞禽鸟类专题 | 动物世界百科</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="bird.css">
     <style>
-        /* 主页专属飞鸟淡背景，不改动公共bird.css */
-        body {
+        /* 完全对标珊瑚页面内嵌样式写法 */
+        /* 顶部导航基础样式 */
+        #nav {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 40px;
+            background-color: rgba(255,255,255,0.15);
+            transition: all 0.3s ease;
+        }
+        #nav.scrolled {
+            background-color: #e8f3ee;
+            box-shadow: 0 2px 12px rgba(120, 160, 140, 0.18);
+        }
+        #nav div:first-child {
+            font-size: 22px;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+        #nav.scrolled div:first-child {
+            color: #3a6b5a;
+        }
+        #nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 15px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+        #nav.scrolled a {
+            color: #446357;
+        }
+        #nav a.active {
+            background-color: #c8e2d7;
+            color: #2d5748 !important;
+        }
+        #nav a:hover {
+            background-color: rgba(255,255,255,0.25);
+        }
+        #nav.scrolled a:hover {
+            background-color: #d7e9e1;
+        }
+
+        /* 横幅Banner 对标sea-banner */
+        .bird-banner {
+            width: 100%;
+            height: 60vh;
+            margin-top: 64px;
+            position: relative;
             background-image: url('https://picsum.photos/id/1044/1920/1080');
             background-size: cover;
-            background-attachment: fixed;
             background-position: center;
-            background-color: rgba(247, 251, 249, 0.92);
-            background-blend-mode: overlay;
+            background-attachment: fixed;
         }
-        .page-title{
-            background: rgba(255,255,255,0.75);
-            padding:24px 16px;
-            border-radius:16px;
+        .banner-mask {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.42);
         }
-        .tips-block{
-            background: rgba(232, 243, 238, 0.88);
+        .banner-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            text-align: center;
+            color: #fff;
         }
-        /* 强制修改卡片网格：一行固定2张，实现2*2规整排版 */
-        .animal-card-wrap {
+        .banner-content h1 {
+            font-size: 42px;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+        .banner-content p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* 通用标题分割线 完全对齐 */
+        .common-title {
+            font-size: 28px;
+            color: #356655;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .line {
+            width: 80px;
+            height: 3px;
+            background-color: #73b89f;
+            margin: 0 auto 30px;
+            border-radius: 3px;
+        }
+
+        /* 概述板块 */
+        .intro {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 24px;
+        }
+        .intro p {
+            line-height: 1.8;
+            color: #2c3e35;
+            font-size: 16px;
+            text-indent: 2em;
+        }
+
+        /* 四大分类分层板块 对标coral-layers布局 */
+        .bird-zone {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 24px;
+        }
+        .zone-title {
+            font-size: 28px;
+            color: #356655;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .zone-line {
+            width: 100px;
+            height: 3px;
+            background: #73b89f;
+            margin: 0 auto 40px;
+            border-radius: 3px;
+        }
+        .bird-layers {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+        .layer-item {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .layer-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .layer-image {
+            width: 50%;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(120, 160, 140, 0.12);
+        }
+        .layer-image img {
+            width: 100%;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .layer-image img:hover {
+            transform: scale(1.05);
+        }
+        .layer-text {
+            width: 50%;
+        }
+        .layer-depth {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #c8e2d7;
+            color: #2d5748;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .layer-text h3 {
+            font-size: 24px;
+            color: #2f5e4e;
+            margin-bottom: 16px;
+        }
+        .layer-text p {
+            line-height: 1.8;
+            color: #4a6b5f;
+            margin-bottom: 16px;
+        }
+        .layer-text a {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #81bca6;
+            color: #fff;
+            padding: 9px 22px;
+            border-radius: 8px;
+            transition: 0.25s;
+        }
+        .layer-text a:hover {
+            background-color: #5fa88d;
+        }
+
+        /* 生态特征板块 左右图文布局 */
+        .bird-feature {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 24px;
+        }
+        .feature-box {
+            display: flex;
+            gap: 36px;
+            align-items: center;
+        }
+        .feature-text {
+            width: 55%;
+        }
+        .feature-text h3 {
+            font-size: 24px;
+            color: #2f5e4e;
+            margin-bottom: 16px;
+        }
+        .feature-text p {
+            line-height: 1.8;
+            color: #4a6b5f;
+            margin-bottom: 16px;
+        }
+        .feature-list {
+            padding-left: 22px;
+            line-height: 1.8;
+            color: #426559;
+        }
+        .feature-list li {
+            margin: 8px 0;
+        }
+        .feature-img {
+            width: 45%;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(120, 160, 140, 0.12);
+        }
+        .feature-img img {
+            width: 100%;
+            display: block;
+        }
+
+        /* 物种卡片网格 固定一行两列 完全对齐需求 */
+        .bird-species {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 24px;
+        }
+        .species-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            margin-bottom: 50px;
+            gap: 30px;
+        }
+        .species-card {
+            background: #ffffff;
+            border: 1px solid #e1ede8;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(135, 175, 160, 0.08);
+            transition: all 0.3s ease;
+        }
+        .species-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 6px 18px rgba(120, 165, 145, 0.14);
+        }
+        .species-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        .species-content {
+            padding: 24px;
+        }
+        .species-content h3 {
+            color: #2f5e4e;
+            font-size: 20px;
+            margin-bottom: 12px;
+            padding-left: 8px;
+            border-left: 4px solid #73b89f;
+        }
+        .species-content p {
+            color: #4a6b5f;
+            line-height: 1.7;
+            font-size: 14.5px;
+        }
+
+        /* 保护说明板块 */
+        .bird-eco {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 24px;
+        }
+        .eco-desc {
+            line-height: 1.8;
+            text-indent: 2em;
+            color: #2c3e35;
+            font-size: 16px;
+        }
+
+        /* 页脚统一格式 */
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 30px 0;
+            background-color: #e8f3ee;
+            color: #608073;
+            font-size: 14px;
+        }
+
+        /* 回到顶部悬浮按钮 */
+        .top-btn {
+            position: fixed;
+            right: 40px;
+            bottom: 40px;
+            width: 46px;
+            height: 46px;
+            background: #81bca6;
+            color: #fff;
+            text-align: center;
+            line-height: 46px;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            z-index: 998;
+        }
+        .top-btn:hover {
+            background: #5fa88d;
         }
     </style>
 </head>
+
 <body>
-<header class="nav-header">
-    <nav class="navbar">
-        <div class="logo">动物世界科普平台</div>
-        <ul class="nav-list">
-            <li><a href="index.html">网站首页</a></li>
-            <li><a href="land.html">陆生动物</a></li>
-            <li><a href="sea.html">海洋生物</a></li>
-            <li><a href="bird.html" class="active">飞禽鸟类</a></li>
-            <li><a href="protect.html">动物保护</a></li>
-        </ul>
-    </nav>
-</header>
+<div id="top"></div>
+<nav id="nav">
+  <div>🐾 动物世界科普平台</div>
+  <div>
+    <a href="index.html">网站首页</a>
+    <a href="land.html">陆生动物</a>
+    <a href="sea.html">海洋生物</a>
+    <a href="bird.html" class="active">飞禽鸟类</a>
+    <a href="protect.html">动物保护</a>
+  </div>
+</nav>
 
-<main class="container">
-    <div class="page-title">
-        <h1>🌤️ 翱翔天际 · 飞禽鸟类科普专区</h1>
-        <p>羽翼乘风，生灵振翅，一同探索天空之中多样的鸟类生灵</p>
+<!-- 鸟类专题Banner -->
+<section class="bird-banner">
+    <div class="banner-mask"></div>
+    <div class="banner-content">
+        <h1>翱翔天际 · 飞禽鸟类专题</h1>
+        <p>解锁羽翼生灵的天空奥秘，探索四大鸟类生态类群</p>
     </div>
+</section>
 
-    <div class="animal-card-wrap">
-        <div class="animal-card">
-            <img src="https://picsum.photos/id/1024/600/320" alt="猛禽鸟类" style="width:100%;border-radius:10px;margin-bottom:14px;object-fit:cover;">
-            <h3>🦅 掠食猛禽</h3>
-            <p>拥有锋利爪喙与超强视力，居于食物链顶层，以捕猎小型动物为生</p>
-            <a href="bird_raptor.html" class="card-btn">查看三种猛禽详情</a>
+<!-- 鸟类总概述 -->
+<section class="intro">
+    <h2 class="common-title">鸟类生态总概述</h2>
+    <div class="line"></div>
+    <p>鸟类是体表覆羽、卵生恒温的脊椎动物，也是唯一具备主动飞行能力的陆生脊椎动物类群。全球现存鸟类一万余种，广泛分布于森林、湿地、荒漠、海洋、高原乃至极地。鸟类演化自远古兽脚类恐龙，依靠发达胸肌与中空骨骼适配飞行生活，在生态系统中承担授粉、种子传播、虫害防控、食物链顶层调控等关键作用。依据栖息习性与食性，本专题将鸟类划分为掠食猛禽、观赏珍鸟、迁徙水鸟、珍稀保护鸟类四大板块，完整科普不同类群鸟类的生存习性、物种特征与保护现状。</p>
+</section>
+
+<!-- 四大分类分层板块 -->
+<section class="bird-zone">
+    <h2 class="zone-title">四大鸟类生态类群</h2>
+    <div class="zone-line"></div>
+    <div class="bird-layers">
+        <!-- 1 猛禽 -->
+        <div class="layer-item">
+            <div class="layer-image">
+                <img src="https://picsum.photos/id/1024/600/320" alt="掠食猛禽">
+            </div>
+            <div class="layer-text">
+                <span class="layer-depth">食物链顶层类群</span>
+                <h3>🦅 掠食猛禽</h3>
+                <p>猛禽拥有尖锐弯钩喙与强力利爪，视觉系统极其发达，多数为肉食性捕猎鸟类，分为昼行鹰隼类与夜行鸮类。这类鸟类天然管控小型啮齿类、有害鸟兽种群数量，抑制生态泛滥，是山林与旷野生态不可或缺的天敌调控者，我国所有野生猛禽全部纳入国家级保护名录。</p>
+                <a href="bird_raptor.html">进入猛禽详情页</a>
+            </div>
         </div>
-        <div class="animal-card">
-            <img src="https://picsum.photos/id/1065/600/320" alt="观赏鸟类" style="width:100%;border-radius:10px;margin-bottom:14px;object-fit:cover;">
-            <h3>🦜 观赏珍鸟</h3>
-            <p>羽色斑斓外形优美，常被人工繁育观赏，野生个体大多受法律保护</p>
-            <a href="bird_view.html" class="card-btn">查看三种观赏鸟类</a>
+        <!-- 2 观赏鸟类 -->
+        <div class="layer-item">
+            <div class="layer-image">
+                <img src="https://picsum.photos/id/1065/600/320" alt="观赏珍鸟">
+            </div>
+            <div class="layer-text">
+                <span class="layer-depth">人工繁育观赏类群</span>
+                <h3>🦜 观赏珍鸟</h3>
+                <p>该类群鸟类羽色艳丽斑斓、鸣唱婉转悦耳，长期被人类作为观赏、宠物用途驯养。包含孔雀、鹦鹉、画眉等经典品类，但绝大多数本土野生观赏鸟类已升级为国家二级保护动物，禁止私自捕捉、贩卖与无证笼养，仅合法人工繁育个体可合规饲养。</p>
+                <a href="bird_view.html">进入观赏鸟详情页</a>
+            </div>
         </div>
-        <div class="animal-card">
-            <img src="https://picsum.photos/id/1071/600/320" alt="候鸟水鸟" style="width:100%;border-radius:10px;margin-bottom:14px;object-fit:cover;">
-            <h3>🦢 迁徙候鸟水鸟</h3>
-            <p>依赖水域栖息，春秋跨越千里迁徙，是湿地生态环境的指示物种</p>
-            <a href="bird_migrate.html" class="card-btn">查看三种候鸟水鸟</a>
+        <!-- 3 候鸟水鸟 -->
+        <div class="layer-item">
+            <div class="layer-image">
+                <img src="https://picsum.photos/id/1071/600/320" alt="迁徙候鸟水鸟">
+            </div>
+            <div class="layer-text">
+                <span class="layer-depth">湿地指示性类群</span>
+                <h3>🦢 迁徙候鸟水鸟</h3>
+                <p>水鸟依赖湖泊、滩涂、海岸湿地生存，具备超长距离季节性迁徙本能，每年春秋时节往返繁殖地与越冬地。水鸟对水体污染、湿地退化极度敏感，种群数量直接反映水域生态健康程度，是湿地环境最直观的生态风向标。</p>
+                <a href="bird_migrate.html">进入候鸟水鸟详情页</a>
+            </div>
         </div>
-        <div class="animal-card">
-            <img src="https://picsum.photos/id/1068/600/320" alt="珍稀保护鸟类" style="width:100%;border-radius:10px;margin-bottom:14px;object-fit:cover;">
-            <h3>🕊️ 国家珍稀保护鸟类</h3>
-            <p>野外种群濒临稀缺，列入国家一二级保护名录，受法律严格保护</p>
-            <a href="bird_rare.html" class="card-btn">查看三种国宝级鸟类</a>
+        <!-- 4 珍稀保护鸟类 -->
+        <div class="layer-item">
+            <div class="layer-image">
+                <img src="https://picsum.photos/id/1068/600/320" alt="珍稀保护鸟类">
+            </div>
+            <div class="layer-text">
+                <span class="layer-depth">国家重点保护类群</span>
+                <h3>🕊️ 国宝级珍稀鸟类</h3>
+                <p>此类鸟类野外种群数量极度濒危，受栖息地破坏、人为捕猎影响濒临灭绝，全部列入国家一级重点保护野生动物名录。每一种都具备极高科研价值与生态意义，伤害、猎捕、交易此类物种将触犯刑法，面临有期徒刑处罚。</p>
+                <a href="bird_rare.html">进入珍稀鸟类详情页</a>
+            </div>
         </div>
     </div>
+</section>
 
-    <section class="tips-block">
-        <h2>鸟类保护倡议</h2>
-        <ul>
-            <li>拒绝购买、捕捉野生鸟类，抵制非法野鸟贸易，不私自笼养野生飞禽</li>
-            <li>偶遇受伤、落单幼鸟或成鸟，优先联系当地林业部门与野生动物救助站</li>
-            <li>减少随意丢弃塑料垃圾，避免鸟类误食塑料袋、尼龙绳造成缠绕窒息</li>
-        </ul>
-    </section>
-</main>
+<!-- 鸟类生态核心特征 -->
+<section class="bird-feature">
+    <h2 class="common-title">鸟类生态核心特征</h2>
+    <div class="line"></div>
+    <div class="feature-box">
+        <div class="feature-text">
+            <h3>飞翔生灵独有的生命体系</h3>
+            <p>鸟类经过亿万年演化完全适配空中生存，骨骼中空轻量化、气囊双重呼吸、高效循环系统支撑长距离飞行，是陆地生态向天空生态延伸的关键物种。</p>
+            <ul class="feature-list">
+                <li><strong>羽毛恒温系统</strong>：体表羽毛隔绝温度，维持恒定体温，可适应严寒酷暑多种环境。</li>
+                <li><strong>定向迁徙本能</strong>：依靠地磁场、星象、地标导航，可完成数千公里精准跨地域迁徙。</li>
+                <li><strong>生态循环作用</strong>：吞食果实传播植物种子，捕食害虫降低农业虫害，维系自然物质循环。</li>
+                <li><strong>环境监测哨兵</strong>：鸟类种群变化可快速预警山林、湿地、大气环境的污染与退化问题。</li>
+                <li><strong>生存脆弱短板</strong>：巢穴易受人为打扰，卵与幼鸟存活率低，栖息地压缩极易造成种群衰退。</li>
+            </ul>
+        </div>
+        <div class="feature-img">
+            <img src="https://picsum.photos/id/1047/800/600" alt="鸟类生态全景">
+        </div>
+    </div>
+</section>
 
-<footer class="footer">
-    <p>© 2026 动物世界科普项目 | GitHub Pages 静态科普站点</p>
+<!-- 首页精选代表物种卡片（两行两列） -->
+<section class="bird-species">
+    <h2 class="common-title">经典代表鸟类简介</h2>
+    <div class="line"></div>
+    <div class="species-grid">
+        <div class="species-card">
+            <img src="https://picsum.photos/id/1024/600/320" alt="金雕">
+            <div class="species-content">
+                <h3>金雕</h3>
+                <p>国家一级保护猛禽，翼展可达两米，山地顶级掠食者，力量强悍可捕食中小型兽类，象征勇猛威严，野外种群十分稀少，受法律严格保护。</p>
+            </div>
+        </div>
+        <div class="species-card">
+            <img src="https://picsum.photos/id/1062/600/320" alt="蓝孔雀">
+            <div class="species-content">
+                <h3>蓝孔雀</h3>
+                <p>标志性观赏鸟类，雄性尾屏繁复华丽，仅人工繁育个体可合规观赏，原生野生种群受保护，不可随意放生野外造成生态入侵。</p>
+            </div>
+        </div>
+        <div class="species-card">
+            <img src="https://picsum.photos/id/1036/600/320" alt="大天鹅">
+            <div class="species-content">
+                <h3>大天鹅</h3>
+                <p>国家二级保护候鸟，通体白羽姿态优雅，终生多为单一配偶，对水质洁净度要求极高，是内陆湖泊湿地生态的标志性物种。</p>
+            </div>
+        </div>
+        <div class="species-card">
+            <img src="https://picsum.photos/id/1048/600/320" alt="丹顶鹤">
+            <div class="species-content">
+                <h3>丹顶鹤</h3>
+                <p>国宝级一级保护鸟类，传统文化仙禽代表，仅存活于无污染沼泽湿地，全球野生数量不足三千只，是湿地生态保护旗舰物种。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 鸟类生态价值与保护倡议 -->
+<section class="bird-eco">
+    <h2 class="common-title">生态价值与保护意义</h2>
+    <div class="line"></div>
+    <p class="eco-desc">鸟类是地球陆地生态系统关键组成部分，在农林虫害防治、植物种子扩散、授粉繁育、湿地生态维稳方面具备不可替代的生态价值，同时具备极高的人文观赏价值与气候环境科研参考价值。如今城市扩张、山林砍伐、湿地填埋、毒饵灭鼠、非法捕鸟网具、宠物野生鸟贸易，持续压缩鸟类生存空间，大量本土鸟类种群逐年下降。拒绝购买野生鸟类、不捡拾鸟蛋、不破坏鸟巢、不随意投喂有害食物，主动参与野生动物救助，守护每一类飞鸟种群，才能维持天空之下完整的自然生态链条。</p>
+</section>
+
+<footer>
+    ©2026 动物世界科普平台 Bird Encyclopedia
 </footer>
+
+<a href="#top" class="top-btn">↑</a>
+
+<!-- 导航滚动变色JS 完全照搬伙伴原版逻辑 -->
+<script>
+window.addEventListener("scroll",()=>{
+  let nav = document.getElementById("nav");
+  if(window.scrollY>50){
+    nav.classList.add("scrolled");
+  }else{
+    nav.classList.remove("scrolled");
+  }
+});
+</script>
 </body>
 </html>

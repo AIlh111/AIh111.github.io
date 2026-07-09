@@ -127,43 +127,42 @@
             margin: 0 auto 40px;
             border-radius: 3px;
         }
+
+        /* 新版排版：取消左右分栏，统一上图下文垂直排列 */
         .layer-wrap {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto 80px;
             padding: 0 24px;
             display: flex;
             flex-direction: column;
-            gap: 48px;
+            gap: 50px;
         }
         .layer-item {
             display: flex;
-            gap: 32px;
-            align-items: center;
-        }
-        .layer-item:nth-child(even) {
-            flex-direction: row-reverse;
+            flex-direction: column;
+            gap: 24px;
         }
         .layer-image {
-            width: 50%;
-            border-radius: 14px;
+            width: 100%;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 16px rgba(120, 160, 140, 0.12);
+            box-shadow: 0 4px 18px rgba(120, 160, 140, 0.15);
         }
         .layer-image img {
             width: 100%;
             display: block;
         }
         .layer-text {
-            width: 50%;
+            width: 100%;
         }
         .layer-depth {
             display: inline-block;
-            padding: 4px 12px;
+            padding: 4px 14px;
             background: #c8e2d7;
             color: #2d5748;
-            border-radius: 20px;
+            border-radius: 22px;
             font-size: 14px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         .layer-text h3 {
             font-size: 24px;
@@ -175,18 +174,19 @@
             color: #4a6b5f;
         }
 
+        /* 特征模块同样改为上图下文 */
         .feature-wrap {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto 80px;
             padding: 0 24px;
         }
         .feature-box {
             display: flex;
-            gap: 36px;
-            align-items: center;
+            flex-direction: column;
+            gap: 28px;
         }
         .feature-text {
-            width: 55%;
+            width: 100%;
         }
         .feature-text h3 {
             font-size: 24px;
@@ -207,10 +207,10 @@
             margin: 8px 0;
         }
         .feature-img {
-            width: 45%;
-            border-radius: 14px;
+            width: 100%;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 16px rgba(120, 160, 140, 0.12);
+            box-shadow: 0 4px 18px rgba(120, 160, 140, 0.15);
         }
         .feature-img img {
             width: 100%;
@@ -225,19 +225,29 @@
         .species-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 24px;
+        }
+        @media (max-width: 800px) {
+            .species-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 550px) {
+            .species-grid {
+                grid-template-columns: 1fr;
+            }
         }
         .species-card {
             background: #ffffff;
             border: 1px solid #e1ede8;
-            border-radius: 14px;
+            border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 3px 12px rgba(135, 175, 160, 0.08);
             transition: all 0.3s ease;
         }
         .species-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 6px 18px rgba(120, 165, 145, 0.14);
+            box-shadow: 0 6px 20px rgba(120, 165, 145, 0.14);
         }
         .species-card img {
             width: 100%;
@@ -265,7 +275,7 @@
         }
 
         .eco-wrap {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto 80px;
             padding: 0 24px;
         }
@@ -329,7 +339,7 @@
 <section class="intro">
     <h2 class="common-title">珍稀鸟类类群概述</h2>
     <div class="line"></div>
-    <p>珍稀保护鸟类特指野外种群数量极少、濒临灭绝风险，被列入国家一级、二级重点保护野生动物名录的鸟类物种。造成濒危的主要原因包含栖息地破坏、人为盗猎、环境污染、食物链断裂等。此类鸟类繁育难度极低，野外幼鸟存活率差，一旦原生种群消失很难人工复育重建种群。我国对一级保护野生动物实施最严格法律管控，伤害、捕捉、交易、食用一级保护鸟类，会直接构成刑事犯罪。</p>
+    <p>珍稀保护鸟类特指野外种群数量稀少、存在灭绝风险，被列入国家一级、二级重点保护野生动物名录的鸟类物种。主要致危因素包含栖息地损毁、人为盗猎捕杀、环境污染、食物链断裂等。该类鸟类繁育难度极高，野外雏鸟存活率极低，原生种群一旦彻底消失很难通过人工繁育重建种群。我国针对一级保护野生动物执行最严格法律管控，捕捉、伤害、交易、食用一级保护鸟类，直接构成刑事犯罪。</p>
     <a href="bird.html" class="back-index">← 返回鸟类总专区首页</a>
 </section>
 
@@ -343,24 +353,3 @@
             </div>
             <div class="layer-text">
                 <span class="layer-depth">湿地旗舰物种</span>
-                <h3>鹤科珍稀鸟类</h3>
-                <p>以丹顶鹤、白头鹤、黑颈鹤为代表，全部为国家一级保护动物。鹤类寿命长、婚配专一，对湿地沼泽生境依赖性极强，湿地退化会直接导致繁殖地消失。丹顶鹤自古被视作祥瑞象征，如今依靠保护区人工繁育野放，种群数量才得以缓慢回升。</p>
-            </div>
-        </div>
-        <div class="layer-item">
-            <div class="layer-image">
-                <img src="https://picsum.photos/id/1086/800/500" alt="朱鹮">
-            </div>
-            <div class="layer-text">
-                <span class="layer-depth">极危复育物种</span>
-                <h3>一度野外灭绝的朱鹮</h3>
-                <p>上世纪全球仅在陕西洋县发现7只野生朱鹮，属于极度濒危物种。经过数十年专项保育、栖息地修复、天敌管控，如今种群恢复至数千只，是世界濒危鸟类保护最成功的案例之一，依旧列为国家一级重点保护动物严格管控。</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="feature-wrap">
-    <h2 class="common-title">珍稀鸟类濒危主要诱因</h2>
-    <div class="line"></div>
-    <div class="feature-box

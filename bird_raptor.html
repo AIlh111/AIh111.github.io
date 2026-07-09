@@ -127,43 +127,42 @@
             margin: 0 auto 40px;
             border-radius: 3px;
         }
+
+        /* 【新版排版：取消左右分栏，统一上图下文垂直排列】 */
         .layer-wrap {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto 80px;
             padding: 0 24px;
             display: flex;
             flex-direction: column;
-            gap: 48px;
+            gap: 50px;
         }
         .layer-item {
             display: flex;
-            gap: 32px;
-            align-items: center;
-        }
-        .layer-item:nth-child(even) {
-            flex-direction: row-reverse;
+            flex-direction: column;
+            gap: 24px;
         }
         .layer-image {
-            width: 50%;
-            border-radius: 14px;
+            width: 100%;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 16px rgba(120, 160, 140, 0.12);
+            box-shadow: 0 4px 18px rgba(120, 160, 140, 0.15);
         }
         .layer-image img {
             width: 100%;
             display: block;
         }
         .layer-text {
-            width: 50%;
+            width: 100%;
         }
         .layer-depth {
             display: inline-block;
-            padding: 4px 12px;
+            padding: 4px 14px;
             background: #c8e2d7;
             color: #2d5748;
-            border-radius: 20px;
+            border-radius: 22px;
             font-size: 14px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         .layer-text h3 {
             font-size: 24px;
@@ -175,18 +174,19 @@
             color: #4a6b5f;
         }
 
+        /* 特征模块同样改为上图下文 */
         .feature-wrap {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto 80px;
             padding: 0 24px;
         }
         .feature-box {
             display: flex;
-            gap: 36px;
-            align-items: center;
+            flex-direction: column;
+            gap: 28px;
         }
         .feature-text {
-            width: 55%;
+            width: 100%;
         }
         .feature-text h3 {
             font-size: 24px;
@@ -207,10 +207,10 @@
             margin: 8px 0;
         }
         .feature-img {
-            width: 45%;
-            border-radius: 14px;
+            width: 100%;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 16px rgba(120, 160, 140, 0.12);
+            box-shadow: 0 4px 18px rgba(120, 160, 140, 0.15);
         }
         .feature-img img {
             width: 100%;
@@ -225,19 +225,29 @@
         .species-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 24px;
+        }
+        @media (max-width: 800px) {
+            .species-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 550px) {
+            .species-grid {
+                grid-template-columns: 1fr;
+            }
         }
         .species-card {
             background: #ffffff;
             border: 1px solid #e1ede8;
-            border-radius: 14px;
+            border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 3px 12px rgba(135, 175, 160, 0.08);
             transition: all 0.3s ease;
         }
         .species-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 6px 18px rgba(120, 165, 145, 0.14);
+            box-shadow: 0 6px 20px rgba(120, 165, 145, 0.14);
         }
         .species-card img {
             width: 100%;
@@ -265,7 +275,7 @@
         }
 
         .eco-wrap {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto 80px;
             padding: 0 24px;
         }
@@ -309,7 +319,6 @@
 
 <body>
 <div id="top"></div>
-<!-- 本页active为【掠食猛禽】 -->
 <nav id="nav">
   <div class="logo-text">🐾 动物百科</div>
   <a href="index.html">首页</a>

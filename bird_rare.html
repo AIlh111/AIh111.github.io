@@ -3,81 +3,364 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>珍稀保护鸟类专题 | 飞禽鸟类百科</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="bird.css">
-    <title>珍稀保护鸟类详情 | 飞禽鸟类专区</title>
     <style>
-        body{
-            background-image: url('https://picsum.photos/id/1049/1920/1080');
+        /* 导航统一样式 */
+        #top{
+            height: 0;
+        }
+        #nav {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 60px;
+            padding: 20px 60px;
+            background-color: rgba(255,255,255,0.08);
+            transition: all 0.3s ease;
+        }
+        #nav.scrolled {
+            background-color: #0f3443;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+        }
+        #nav .logo-text{
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+        #nav a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 48px;
+            transition: 0.3s;
+        }
+        #nav a.active {
+            color: #ffdd00;
+            border-bottom: 4px solid #ffdd00;
+        }
+        #nav a:hover {
+            color: #ffdd00;
+        }
+
+        .rare-banner {
+            width: 100%;
+            height: 60vh;
+            margin-top: 64px;
+            position: relative;
+            background-image: url('https://picsum.photos/id/1068/1920/1080');
             background-size: cover;
-            background-attachment: fixed;
             background-position: center;
-            background-color: rgba(247, 251, 249, 0.93);
-            background-blend-mode: overlay;
+            background-attachment: fixed;
         }
-        .page-title{
-            background: rgba(255,255,255,0.78);
-            padding:24px 16px;
-            border-radius:16px;
+        .banner-mask {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.42);
         }
-        .tips-block{
-            background: rgba(232, 243, 238, 0.9);
+        .banner-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            text-align: center;
+            color: #fff;
+        }
+        .banner-content h1 {
+            font-size: 42px;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+        .banner-content p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .common-title {
+            font-size: 28px;
+            color: #356655;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .line {
+            width: 80px;
+            height: 3px;
+            background-color: #73b89f;
+            margin: 0 auto 30px;
+            border-radius: 3px;
+        }
+
+        .intro {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 24px;
+        }
+        .intro p {
+            line-height: 1.8;
+            color: #2c3e35;
+            font-size: 16px;
+            text-indent: 2em;
+        }
+        .back-index{
+            display:block;
+            text-align:center;
+            margin-bottom:20px;
+            color:#487d6b;
+            text-decoration:none;
+        }
+
+        .zone-title {
+            font-size: 28px;
+            color: #356655;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .zone-line {
+            width: 100px;
+            height: 3px;
+            background: #73b89f;
+            margin: 0 auto 40px;
+            border-radius: 3px;
+        }
+        .layer-wrap {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+        .layer-item {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .layer-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .layer-image {
+            width: 50%;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(120, 160, 140, 0.12);
+        }
+        .layer-image img {
+            width: 100%;
+            display: block;
+        }
+        .layer-text {
+            width: 50%;
+        }
+        .layer-depth {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #c8e2d7;
+            color: #2d5748;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .layer-text h3 {
+            font-size: 24px;
+            color: #2f5e4e;
+            margin-bottom: 16px;
+        }
+        .layer-text p {
+            line-height: 1.8;
+            color: #4a6b5f;
+        }
+
+        .feature-wrap {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 24px;
+        }
+        .feature-box {
+            display: flex;
+            gap: 36px;
+            align-items: center;
+        }
+        .feature-text {
+            width: 55%;
+        }
+        .feature-text h3 {
+            font-size: 24px;
+            color: #2f5e4e;
+            margin-bottom: 16px;
+        }
+        .feature-text p {
+            line-height: 1.8;
+            color: #4a6b5f;
+            margin-bottom: 16px;
+        }
+        .feature-list {
+            padding-left: 22px;
+            line-height: 1.8;
+            color: #426559;
+        }
+        .feature-list li {
+            margin: 8px 0;
+        }
+        .feature-img {
+            width: 45%;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(120, 160, 140, 0.12);
+        }
+        .feature-img img {
+            width: 100%;
+            display: block;
+        }
+
+        .species-wrap {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 24px;
+        }
+        .species-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .species-card {
+            background: #ffffff;
+            border: 1px solid #e1ede8;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(135, 175, 160, 0.08);
+            transition: all 0.3s ease;
+        }
+        .species-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 6px 18px rgba(120, 165, 145, 0.14);
+        }
+        .species-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        .species-content {
+            padding: 24px;
+        }
+        .species-content h3 {
+            color: #2f5e4e;
+            font-size: 20px;
+            margin-bottom: 12px;
+            padding-left: 8px;
+            border-left: 4px solid #73b89f;
+        }
+        .species-content p {
+            color: #4a6b5f;
+            line-height: 1.7;
+            font-size: 14.5px;
+        }
+        .species-content strong {
+            color: #c0392b;
+        }
+
+        .eco-wrap {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 24px;
+        }
+        .eco-desc {
+            line-height: 1.8;
+            text-indent: 2em;
+            color: #2c3e35;
+            font-size: 16px;
+        }
+
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 30px 0;
+            background-color: #e8f3ee;
+            color: #608073;
+            font-size: 14px;
+        }
+
+        .top-btn {
+            position: fixed;
+            right: 40px;
+            bottom: 40px;
+            width: 46px;
+            height: 46px;
+            background: #81bca6;
+            color: #fff;
+            text-align: center;
+            line-height: 46px;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            z-index: 998;
+        }
+        .top-btn:hover {
+            background: #5fa88d;
         }
     </style>
 </head>
+
 <body>
-<header class="nav-header">
-    <nav class="navbar">
-        <div class="logo">动物世界科普平台</div>
-        <ul class="nav-list">
-            <li><a href="index.html">网站首页</a></li>
-            <li><a href="land.html">陆生动物</a></li>
-            <li><a href="sea.html">海洋生物</a></li>
-            <li><a href="bird.html" class="active">飞禽鸟类</a></li>
-            <li><a href="protect.html">动物保护</a></li>
-        </ul>
-    </nav>
-</header>
+<div id="top"></div>
+<nav id="nav">
+  <div class="logo-text">🐾 动物百科</div>
+  <a href="index.html">首页</a>
+  <a href="land.html">陆地</a>
+  <a href="sea.html">海洋</a>
+  <a href="bird_rare.html" class="active">珍稀鸟类</a>
+  <a href="protect.html">保护</a>
+</nav>
 
-<main class="container">
-    <div class="page-title">
-        <h1>🕊️ 国家一级珍稀保护鸟类专区</h1>
-        <p>种群极度濒危，为国家级重点保护物种，伤害此类生物将依法追责</p>
-        <a href="bird.html">← 返回鸟类分类总首页</a>
+<section class="rare-banner">
+    <div class="banner-mask"></div>
+    <div class="banner-content">
+        <h1>🕊️ 珍稀保护鸟类专题</h1>
+        <p>濒临消逝的空中精灵，国家级重点保护珍稀禽类</p>
     </div>
+</section>
 
-    <div class="animal-card-wrap">
-        <div class="animal-card">
-            <img src="https://picsum.photos/id/1048/600/320" alt="丹顶鹤" style="width:100%;border-radius:10px;margin-bottom:14px;object-fit:cover;">
-            <h3>丹顶鹤</h3>
-            <p><strong>保护级别：国家一级保护动物</strong></p>
-            <p>中华文化中的仙禽象征，头顶红色裸皮并非剧毒，是皮肤毛细血管显现。仅栖息在无污染沼泽湿地，全球野生个体仅两千余只，湿地退化是其最大生存威胁。</p>
+<section class="intro">
+    <h2 class="common-title">珍稀鸟类类群概述</h2>
+    <div class="line"></div>
+    <p>珍稀保护鸟类特指野外种群数量极少、濒临灭绝风险，被列入国家一级、二级重点保护野生动物名录的鸟类物种。造成濒危的主要原因包含栖息地破坏、人为盗猎、环境污染、食物链断裂等。此类鸟类繁育难度极低，野外幼鸟存活率差，一旦原生种群消失很难人工复育重建种群。我国对一级保护野生动物实施最严格法律管控，伤害、捕捉、交易、食用一级保护鸟类，会直接构成刑事犯罪。</p>
+    <a href="bird.html" class="back-index">← 返回鸟类总专区首页</a>
+</section>
+
+<section>
+    <h2 class="zone-title">国内两大旗舰珍稀鸟类类别</h2>
+    <div class="zone-line"></div>
+    <div class="layer-wrap">
+        <div class="layer-item">
+            <div class="layer-image">
+                <img src="https://picsum.photos/id/1068/800/500" alt="鹤类珍禽">
+            </div>
+            <div class="layer-text">
+                <span class="layer-depth">湿地旗舰物种</span>
+                <h3>鹤科珍稀鸟类</h3>
+                <p>以丹顶鹤、白头鹤、黑颈鹤为代表，全部为国家一级保护动物。鹤类寿命长、婚配专一，对湿地沼泽生境依赖性极强，湿地退化会直接导致繁殖地消失。丹顶鹤自古被视作祥瑞象征，如今依靠保护区人工繁育野放，种群数量才得以缓慢回升。</p>
+            </div>
         </div>
-        <div class="animal-card">
-            <img src="https://picsum.photos/id/1040/600/320" alt="朱鹮" style="width:100%;border-radius:10px;margin-bottom:14px;object-fit:cover;">
-            <h3>朱鹮</h3>
-            <p><strong>保护级别：国家一级保护动物</strong></p>
-            <p>上世纪一度全球仅发现7只野生个体，经过数十年人工繁育与野化放归，如今种群恢复至数千只。羽毛白里透着淡粉色霞光，是我国野生动物保护标志性成功案例。</p>
-        </div>
-        <div class="animal-card">
-            <img src="https://picsum.photos/id/1043/600/320" alt="中华秋沙鸭" style="width:100%;border-radius:10px;margin-bottom:14px;object-fit:cover;">
-            <h3>中华秋沙鸭</h3>
-            <p><strong>保护级别：国家一级保护动物</strong></p>
-            <p>专属中国的特有珍稀水鸭，被称为鸟类中的“活化石”，仅在无污染河流繁育，对水质要求苛刻。野外数量比大熊猫还要稀少，是河流生态环境的旗舰指示物种。</p>
+        <div class="layer-item">
+            <div class="layer-image">
+                <img src="https://picsum.photos/id/1086/800/500" alt="朱鹮">
+            </div>
+            <div class="layer-text">
+                <span class="layer-depth">极危复育物种</span>
+                <h3>一度野外灭绝的朱鹮</h3>
+                <p>上世纪全球仅在陕西洋县发现7只野生朱鹮，属于极度濒危物种。经过数十年专项保育、栖息地修复、天敌管控，如今种群恢复至数千只，是世界濒危鸟类保护最成功的案例之一，依旧列为国家一级重点保护动物严格管控。</p>
+            </div>
         </div>
     </div>
+</section>
 
-    <section class="tips-block">
-        <h2>法律科普须知</h2>
-        <ul>
-            <li>猎捕、杀害国家一级保护鸟类，最低量刑五年以上有期徒刑，情节严重可判十年以上</li>
-            <li>建立自然保护区、修复原生湿地，是从根本上守护珍稀鸟类繁衍栖息地</li>
-        </ul>
-    </section>
-</main>
-
-<footer class="footer">
-    <p>© 2026 动物世界科普项目</p>
-</footer>
-</body>
-</html>
+<section class="feature-wrap">
+    <h2 class="common-title">珍稀鸟类濒危主要诱因</h2>
+    <div class="line"></div>
+    <div class="feature-box

@@ -24,6 +24,13 @@
         .tips-block{
             background: rgba(232, 243, 238, 0.88);
         }
+        /* 强制修改卡片网格：一行固定2张，实现2*2规整排版 */
+        .animal-card-wrap {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 50px;
+        }
     </style>
 </head>
 <body>
@@ -54,19 +61,19 @@
             <a href="bird_raptor.html" class="card-btn">查看三种猛禽详情</a>
         </div>
         <div class="animal-card">
-            <img src="https://picsum.photos/id/1062/600/320" alt="观赏鸟类" style="width:100%;border-radius:10px;margin-bottom:14px;object-fit:cover;">
+            <img src="https://picsum.photos/id/1065/600/320" alt="观赏鸟类" style="width:100%;border-radius:10px;margin-bottom:14px;object-fit:cover;">
             <h3>🦜 观赏珍鸟</h3>
             <p>羽色斑斓外形优美，常被人工繁育观赏，野生个体大多受法律保护</p>
             <a href="bird_view.html" class="card-btn">查看三种观赏鸟类</a>
         </div>
         <div class="animal-card">
-            <img src="https://picsum.photos/id/1036/600/320" alt="候鸟水鸟" style="width:100%;border-radius:10px;margin-bottom:14px;object-fit:cover;">
+            <img src="https://picsum.photos/id/1071/600/320" alt="候鸟水鸟" style="width:100%;border-radius:10px;margin-bottom:14px;object-fit:cover;">
             <h3>🦢 迁徙候鸟水鸟</h3>
             <p>依赖水域栖息，春秋跨越千里迁徙，是湿地生态环境的指示物种</p>
             <a href="bird_migrate.html" class="card-btn">查看三种候鸟水鸟</a>
         </div>
         <div class="animal-card">
-            <img src="https://picsum.photos/id/1048/600/320" alt="珍稀保护鸟类" style="width:100%;border-radius:10px;margin-bottom:14px;object-fit:cover;">
+            <img src="https://picsum.photos/id/1068/600/320" alt="珍稀保护鸟类" style="width:100%;border-radius:10px;margin-bottom:14px;object-fit:cover;">
             <h3>🕊️ 国家珍稀保护鸟类</h3>
             <p>野外种群濒临稀缺，列入国家一二级保护名录，受法律严格保护</p>
             <a href="bird_rare.html" class="card-btn">查看三种国宝级鸟类</a>

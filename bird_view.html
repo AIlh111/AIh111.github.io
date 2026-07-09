@@ -3,81 +3,293 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>观赏鸟类详情 | 飞禽鸟类专区</title>
+    <title>观赏珍鸟专题 | 飞禽鸟类百科</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="bird.css">
     <style>
-        body{
+        #nav {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 40px;
+            background-color: rgba(255,255,255,0.15);
+            transition: all 0.3s ease;
+        }
+        #nav.scrolled {
+            background-color: #e8f3ee;
+            box-shadow: 0 2px 12px rgba(120, 160, 140, 0.18);
+        }
+        #nav div:first-child {
+            font-size: 22px;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+        #nav.scrolled div:first-child {
+            color: #3a6b5a;
+        }
+        #nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 15px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+        #nav.scrolled a {
+            color: #446357;
+        }
+        #nav a.active {
+            background-color: #c8e2d7;
+            color: #2d5748 !important;
+        }
+        #nav a:hover {
+            background-color: rgba(255,255,255,0.25);
+        }
+        #nav.scrolled a:hover {
+            background-color: #d7e9e1;
+        }
+
+        .view-banner {
+            width: 100%;
+            height: 60vh;
+            margin-top: 64px;
+            position: relative;
             background-image: url('https://picsum.photos/id/1064/1920/1080');
             background-size: cover;
-            background-attachment: fixed;
             background-position: center;
-            background-color: rgba(247, 251, 249, 0.93);
-            background-blend-mode: overlay;
+            background-attachment: fixed;
         }
-        .page-title{
-            background: rgba(255,255,255,0.78);
-            padding:24px 16px;
-            border-radius:16px;
+        .banner-mask {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.42);
         }
-        .tips-block{
-            background: rgba(232, 243, 238, 0.9);
+        .banner-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            text-align: center;
+            color: #fff;
+        }
+        .banner-content h1 {
+            font-size: 42px;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+        .banner-content p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .common-title {
+            font-size: 28px;
+            color: #356655;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .line {
+            width: 80px;
+            height: 3px;
+            background-color: #73b89f;
+            margin: 0 auto 30px;
+            border-radius: 3px;
+        }
+
+        .intro {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 24px;
+        }
+        .intro p {
+            line-height: 1.8;
+            color: #2c3e35;
+            font-size: 16px;
+            text-indent: 2em;
+        }
+
+        .species-grid {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .species-card {
+            background: #ffffff;
+            border: 1px solid #e1ede8;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(135, 175, 160, 0.08);
+            transition: all 0.3s ease;
+        }
+        .species-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 6px 18px rgba(120, 165, 145, 0.14);
+        }
+        .species-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        .species-content {
+            padding: 24px;
+        }
+        .species-content h3 {
+            color: #2f5e4e;
+            font-size: 20px;
+            margin-bottom: 12px;
+            padding-left: 8px;
+            border-left: 4px solid #73b89f;
+        }
+        .species-content p {
+            color: #4a6b5f;
+            line-height: 1.7;
+            font-size: 14.5px;
+        }
+        .species-content strong {
+            color: #c0392b;
+        }
+
+        .bird-eco {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 24px;
+        }
+        .eco-desc {
+            line-height: 1.8;
+            text-indent: 2em;
+            color: #2c3e35;
+            font-size: 16px;
+        }
+
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 30px 0;
+            background-color: #e8f3ee;
+            color: #608073;
+            font-size: 14px;
+        }
+
+        .top-btn {
+            position: fixed;
+            right: 40px;
+            bottom: 40px;
+            width: 46px;
+            height: 46px;
+            background: #81bca6;
+            color: #fff;
+            text-align: center;
+            line-height: 46px;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            z-index: 998;
+        }
+        .top-btn:hover {
+            background: #5fa88d;
+        }
+        .back-index{
+            display:block;
+            text-align:center;
+            margin-bottom:20px;
+            color:#487d6b;
+            text-decoration:none;
         }
     </style>
 </head>
+
 <body>
-<header class="nav-header">
-    <nav class="navbar">
-        <div class="logo">动物世界科普平台</div>
-        <ul class="nav-list">
-            <li><a href="index.html">网站首页</a></li>
-            <li><a href="land.html">陆生动物</a></li>
-            <li><a href="sea.html">海洋生物</a></li>
-            <li><a href="bird.html" class="active">飞禽鸟类</a></li>
-            <li><a href="protect.html">动物保护</a></li>
-        </ul>
-    </nav>
-</header>
+<div id="top"></div>
+<nav id="nav">
+  <div>🐾 动物世界科普平台</div>
+  <div>
+    <a href="index.html">网站首页</a>
+    <a href="land.html">陆生动物</a>
+    <a href="sea.html">海洋生物</a>
+    <a href="bird.html" class="active">飞禽鸟类</a>
+    <a href="protect.html">动物保护</a>
+  </div>
+</nav>
 
-<main class="container">
-    <div class="page-title">
-        <h1>🦜 观赏鸟类专区</h1>
-        <p>羽色艳丽、鸣唱动听，多用于人工观赏，野生种群受法律约束保护</p>
-        <a href="bird.html">← 返回鸟类分类总首页</a>
+<section class="view-banner">
+    <div class="banner-mask"></div>
+    <div class="banner-content">
+        <h1>🦜 观赏珍鸟专题</h1>
+        <p>羽色斑斓鸣啼婉转，理性看待人工观赏与野生保护</p>
     </div>
+</section>
 
-    <div class="animal-card-wrap">
-        <div class="animal-card">
-            <img src="https://picsum.photos/id/1062/600/320" alt="蓝孔雀" style="width:100%;border-radius:10px;margin-bottom:14px;object-fit:cover;">
-            <h3>蓝孔雀</h3>
-            <p><strong>保护级别：三有保护动物，野生种群二级保护</strong></p>
-            <p>雄性拥有长达1.5米尾屏，布满眼状斑纹，繁殖期开屏求偶威慑天敌。仅人工合法繁育个体可用于园区观赏，野外原生种群禁止私自捕捉、交易，不可随意放生野外造成生态入侵。</p>
+<section class="intro">
+    <h2 class="common-title">观赏鸟类类群概述</h2>
+    <div class="line"></div>
+    <p>观赏鸟类依靠艳丽羽毛、多变鸣唱获得人类喜爱，长久以来被当作笼养宠物与园林景观动物。但我国2021年新版三有名录大范围升级保护等级，画眉、八哥、所有原生鹦鹉全部划入保护范畴。仅正规养殖场人工繁育、具备合法手续的个体允许流通饲养，野外捕捉、网捕售卖野生观赏鸟属于违法行为，会面临行政处罚与刑事拘留。</p>
+    <a href="bird.html" class="back-index">← 返回鸟类总专区首页</a>
+</section>
+
+<section>
+    <h2 class="common-title">三大代表观赏鸟类物种</h2>
+    <div class="line"></div>
+    <div class="species-grid">
+        <div class="species-card">
+            <img src="https://picsum.photos/id/1062/600/320" alt="蓝孔雀">
+            <div class="species-content">
+                <h3>蓝孔雀</h3>
+                <p><strong>保护级别：三有保护动物，野生种群二级保护</strong></p>
+                <p>雄性尾屏布满眼状斑纹，繁殖期开屏求偶威慑天敌。仅人工合规繁育个体可用于园区观赏，原生野生种群禁止捕捉交易，不可随意野外放生造成外来物种入侵。</p>
+            </div>
         </div>
-        <div class="animal-card">
-            <img src="https://picsum.photos/id/1060/600/320" alt="虎皮鹦鹉" style="width:100%;border-radius:10px;margin-bottom:14px;object-fit:cover;">
-            <h3>虎皮鹦鹉</h3>
-            <p><strong>保护说明：外来人工繁育宠物，本土野生鹦鹉全部保护</strong></p>
-            <p>原产于澳大利亚，是全球最普及的宠物鹦鹉，人工繁殖数量极大。但我国本土所有原生野生鹦鹉均列入国家保护名录，网购野生鹦鹉、牡丹鹦鹉野生种属于违法行为。</p>
+        <div class="species-card">
+            <img src="https://picsum.photos/id/1060/600/320" alt="虎皮鹦鹉">
+            <div class="species-content">
+                <h3>虎皮鹦鹉</h3>
+                <p><strong>保护说明：外来人工繁育宠物，本土野生鹦鹉全保护</strong></p>
+                <p>原产澳大利亚，全球最普及宠物鹦鹉，人工繁殖体量极大。但中国境内本土野生鹦鹉全部列入国家保护名录，网购野生鹦鹉、牡丹鹦鹉野生个体均涉嫌违法。</p>
+            </div>
         </div>
-        <div class="animal-card">
-            <img src="https://picsum.photos/id/1055/600/320" alt="画眉鸟" style="width:100%;border-radius:10px;margin-bottom:14px;object-fit:cover;">
-            <h3>画眉</h3>
-            <p><strong>保护级别：国家二级保护动物</strong></p>
-            <p>因婉转多变的鸣叫声被长期当作笼养观赏鸟，野外种群因过度捕捉数量锐减。自2021年起画眉正式升级为国家二级保护动物，禁止猎捕、贩卖、无证饲养。</p>
+        <div class="species-card">
+            <img src="https://picsum.photos/id/1055/600/320" alt="画眉鸟">
+            <div class="species-content">
+                <h3>画眉</h3>
+                <p><strong>保护级别：国家二级保护动物</strong></p>
+                <p>因婉转多变鸣唱被长期笼养，野外种群因过度捕捉数量锐减。2021年正式升级为国家二级保护动物，猎捕、贩卖、无证饲养画眉均触犯野生动物保护法。</p>
+            </div>
         </div>
     </div>
+</section>
 
-    <section class="tips-block">
-        <h2>饲养科普提醒</h2>
-        <ul>
-            <li>不要网购来路不明的野生鸣禽、鹦鹉，此类交易涉嫌触犯野生动物保护法</li>
-            <li>人工宠物鸟类不可随意野外放生，外来物种会挤压本土鸟类生存空间</li>
-        </ul>
-    </section>
-</main>
+<section class="bird-eco">
+    <h2 class="common-title">饲养与法律科普提醒</h2>
+    <div class="line"></div>
+    <p class="eco-desc">很多花鸟市场私下兜售野捕画眉、百灵、相思鸟等鸣禽，此类鸟类大多在捕捉运输途中应激死亡，存活个体也携带病菌寄生虫。随意放生人工宠物鸟类会破坏本土生态链条，挤压原生鸟类生存资源。想要饲养观赏鸟类务必确认来源合法、手续齐全，拒绝来路不明野生个体，从源头抵制野鸟非法贸易。</p>
+</section>
 
-<footer class="footer">
-    <p>© 2026 动物世界科普项目</p>
+<footer>
+    ©2026 动物世界科普平台 Bird Encyclopedia
 </footer>
+
+<a href="#top" class="top-btn">↑</a>
+
+<script>
+window.addEventListener("scroll",()=>{
+  let nav = document.getElementById("nav");
+  if(window.scrollY>50){
+    nav.classList.add("scrolled");
+  }else{
+    nav.classList.remove("scrolled");
+  }
+});
+</script>
 </body>
 </html>

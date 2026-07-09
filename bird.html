@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="bird.css">
     <style>
-        /* 完全对标海洋主页导航样式 */
+        /* ========== 导航栏 与海洋页面样式完全统一 ========== */
         #top{
             height: 0;
         }
@@ -18,49 +18,39 @@
             left: 0;
             z-index: 999;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
-            padding: 18px 40px;
-            background-color: rgba(255,255,255,0.15);
+            gap: 60px;
+            padding: 20px 60px;
+            background-color: rgba(255,255,255,0.08);
             transition: all 0.3s ease;
         }
+        /* 页面向下滚动后导航背景加深 */
         #nav.scrolled {
-            background-color: #e8f3ee;
-            box-shadow: 0 2px 12px rgba(120, 160, 140, 0.18);
+            background-color: #0f3443;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.25);
         }
-        #nav div:first-child {
-            font-size: 22px;
-            font-weight: 600;
+        #nav .logo-text{
+            font-size: 24px;
+            font-weight: bold;
             color: #fff;
-            letter-spacing: 1px;
-        }
-        #nav.scrolled div:first-child {
-            color: #3a6b5a;
         }
         #nav a {
-            margin: 0 10px;
             text-decoration: none;
             color: #ffffff;
-            font-size: 15px;
-            padding: 6px 10px;
-            border-radius: 6px;
+            font-size: 48px;
             transition: 0.3s;
         }
-        #nav.scrolled a {
-            color: #446357;
-        }
+        /* 当前页面：黄色文字+底部黄色下划线高亮 */
         #nav a.active {
-            background-color: #c8e2d7;
-            color: #2d5748 !important;
+            color: #ffdd00;
+            border-bottom: 4px solid #ffdd00;
         }
         #nav a:hover {
-            background-color: rgba(255,255,255,0.25);
-        }
-        #nav.scrolled a:hover {
-            background-color: #d7e9e1;
+            color: #ffdd00;
         }
 
-        /* 鸟类Banner 只做顶部背景标题区域，高度65vh，不再装卡片 */
+        /* 顶部Banner区域 */
         .bird-banner {
             width: 100%;
             height: 65vh;
@@ -98,7 +88,7 @@
             opacity: 0.9;
         }
 
-        /* 分类玻璃卡片区域：移出Banner，正常文档流，不会遮挡下方内容 */
+        /* 玻璃卡片区域 脱离绝对定位，不会遮挡下方正文 */
         .category-area {
             width: 85%;
             margin: -80px auto 80px;
@@ -161,7 +151,7 @@
             background-color: #5fa88d;
         }
 
-        /* 介绍板块 */
+        /* 介绍正文板块 */
         .intro {
             max-width: 1200px;
             margin: 0 auto 80px;
@@ -197,7 +187,7 @@
             font-size: 14px;
         }
 
-        /* 回到顶部按钮 */
+        /* 回到顶部悬浮按钮 */
         .top-btn {
             position: fixed;
             right: 40px;
@@ -222,18 +212,16 @@
 
 <body>
 <div id="top"></div>
+<!-- 导航栏HTML 主页高亮【鸟类】 -->
 <nav id="nav">
-  <div>🐾 动物百科</div>
-  <div>
-    <a href="index.html">首页</a>
-    <a href="land.html">陆地</a>
-    <a href="sea.html">海洋</a>
-    <a href="bird.html" class="active">鸟类</a>
-    <a href="protect.html">保护</a>
-  </div>
+  <div class="logo-text">🐾 动物百科</div>
+  <a href="index.html">首页</a>
+  <a href="land.html">陆地</a>
+  <a href="sea.html">海洋</a>
+  <a href="bird.html" class="active">鸟类</a>
+  <a href="protect.html">保护</a>
 </nav>
 
-<!-- =================== 顶部Banner 仅标题背景 =================== -->
 <section class="bird-banner">
     <div class="banner-mask"></div>
     <div class="banner-content">
@@ -242,30 +230,25 @@
     </div>
 </section>
 
-<!-- =================== 独立卡片区域 移出Banner，不再悬浮遮挡 =================== -->
 <div class="category-area">
-    <!-- 掠食猛禽 -->
     <div class="glass-card">
         <img src="https://picsum.photos/id/1024/600/320" alt="掠食猛禽">
         <h3>🦅 掠食猛禽</h3>
         <p>拥有锐利爪喙与超强视力，身居食物链顶端，调控山林小型动物种群数量。</p>
         <a href="bird_raptor.html"><button>立即探索</button></a>
     </div>
-    <!-- 观赏珍鸟 -->
     <div class="glass-card">
         <img src="https://picsum.photos/id/1065/600/320" alt="观赏珍鸟">
         <h3>🦜 观赏珍鸟</h3>
         <p>羽色艳丽鸣唱婉转，多被人工繁育观赏，野生原生种类大多列入保护名录。</p>
         <a href="bird_view.html"><button>立即探索</button></a>
     </div>
-    <!-- 迁徙候鸟水鸟 -->
     <div class="glass-card">
         <img src="https://picsum.photos/id/1071/600/320" alt="迁徙候鸟水鸟">
         <h3>🦢 迁徙候鸟水鸟</h3>
         <p>依托湿地河湖生存，春秋跨越千里长途迁徙，是水域生态环境的直观风向标。</p>
         <a href="bird_migrate.html"><button>立即探索</button></a>
     </div>
-    <!-- 珍稀保护鸟类 -->
     <div class="glass-card">
         <img src="https://picsum.photos/id/1068/600/320" alt="珍稀保护鸟类">
         <h3>🕊️ 珍稀保护鸟类</h3>
@@ -274,7 +257,6 @@
     </div>
 </div>
 
-<!-- =================== 下方介绍文字 不会再被卡片遮挡 =================== -->
 <section class="intro">
     <h2>探索飞鸟生灵世界</h2>
     <div class="line"></div>
@@ -285,7 +267,6 @@
     ©2026 飞禽鸟类百科 Bird Animal Encyclopedia
 </footer>
 
-<!-- 平滑回到顶部 -->
 <a href="#top" class="top-btn">↑</a>
 
 <!-- 导航滚动变色JS -->

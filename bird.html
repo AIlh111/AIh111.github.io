@@ -120,6 +120,9 @@
             text-align: center;
             color: #ffffff;
             transition: all 0.3s ease;
+            /* 新增：卡片高度自适应，不会被图片撑破 */
+            display: flex;
+            flex-direction: column;
         }
         .glass-card:hover {
             background: rgba(255, 255, 255, 0.28);
@@ -127,20 +130,25 @@
         }
         .glass-card img {
             width: 100%;
-            height: 180px;
+            height: 160px; /* 缩小图片高度，避免溢出压文字 */
             object-fit: cover;
             border-radius: 12px;
             margin-bottom: 16px;
+            /* 图片严格限定在容器内，禁止向下溢出 */
+            display: block;
+            overflow: hidden;
         }
         .glass-card h3 {
             font-size: 22px;
-            margin-bottom: 10px;
+            margin: 0 0 10px 0;
         }
         .glass-card p {
             font-size: 15px;
             line-height: 1.6;
-            margin-bottom: 18px;
+            margin: 0 0 18px 0;
             opacity: 0.92;
+            /* 文字区域固定不被挤压 */
+            flex-grow: 1;
         }
         .glass-card button {
             padding: 9px 26px;
@@ -151,6 +159,7 @@
             font-size: 15px;
             cursor: pointer;
             transition: 0.25s;
+            margin-top: auto;
         }
         .glass-card button:hover {
             background-color: #5fa88d;

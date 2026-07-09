@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>候鸟水鸟专题 | 飞禽鸟类百科</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="bird.css">
-    <title>候鸟水鸟专题 | 飞禽鸟类百科</title>
     <style>
         #nav {
             width: 100%;
@@ -61,4 +61,235 @@
             height: 60vh;
             margin-top: 64px;
             position: relative;
-            background-image: url('https://picsum.
+            background-image: url('https://picsum.photos/id/1037/1920/1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .banner-mask {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.42);
+        }
+        .banner-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            text-align: center;
+            color: #fff;
+        }
+        .banner-content h1 {
+            font-size: 42px;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+        .banner-content p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .common-title {
+            font-size: 28px;
+            color: #356655;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .line {
+            width: 80px;
+            height: 3px;
+            background-color: #73b89f;
+            margin: 0 auto 30px;
+            border-radius: 3px;
+        }
+
+        .intro {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 24px;
+        }
+        .intro p {
+            line-height: 1.8;
+            color: #2c3e35;
+            font-size: 16px;
+            text-indent: 2em;
+        }
+
+        .species-grid {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .species-card {
+            background: #ffffff;
+            border: 1px solid #e1ede8;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(135, 175, 160, 0.08);
+            transition: all 0.3s ease;
+        }
+        .species-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 6px 18px rgba(120, 165, 145, 0.14);
+        }
+        .species-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        .species-content {
+            padding: 24px;
+        }
+        .species-content h3 {
+            color: #2f5e4e;
+            font-size: 20px;
+            margin-bottom: 12px;
+            padding-left: 8px;
+            border-left: 4px solid #73b89f;
+        }
+        .species-content p {
+            color: #4a6b5f;
+            line-height: 1.7;
+            font-size: 14.5px;
+        }
+        .species-content strong {
+            color: #c0392b;
+        }
+
+        .bird-eco {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 24px;
+        }
+        .eco-desc {
+            line-height: 1.8;
+            text-indent: 2em;
+            color: #2c3e35;
+            font-size: 16px;
+        }
+
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 30px 0;
+            background-color: #e8f3ee;
+            color: #608073;
+            font-size: 14px;
+        }
+
+        .top-btn {
+            position: fixed;
+            right: 40px;
+            bottom: 40px;
+            width: 46px;
+            height: 46px;
+            background: #81bca6;
+            color: #fff;
+            text-align: center;
+            line-height: 46px;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            z-index: 998;
+        }
+        .top-btn:hover {
+            background: #5fa88d;
+        }
+        .back-index{
+            display:block;
+            text-align:center;
+            margin-bottom:20px;
+            color:#487d6b;
+            text-decoration:none;
+        }
+    </style>
+</head>
+
+<body>
+<div id="top"></div>
+<nav id="nav">
+  <div>🐾 动物世界科普平台</div>
+  <div>
+    <a href="index.html">网站首页</a>
+    <a href="land.html">陆生动物</a>
+    <a href="sea.html">海洋生物</a>
+    <a href="bird.html" class="active">飞禽鸟类</a>
+    <a href="protect.html">动物保护</a>
+  </div>
+</nav>
+
+<section class="migrate-banner">
+    <div class="banner-mask"></div>
+    <div class="banner-content">
+        <h1>🦢 候鸟水鸟专题</h1>
+        <p>逐水而居，万里迁徙，守护湿地水域生态平衡</p>
+    </div>
+</section>
+
+<section class="intro">
+    <h2 class="common-title">候鸟水鸟类群概述</h2>
+    <div class="line"></div>
+    <p>候鸟水鸟泛指依赖湖泊、滩涂、近海、沼泽等水环境生存的鸟类，拥有固定季节性迁徙习性，春季飞往北方繁殖，秋季南下越冬。这类鸟类对水体污染、湿地围垦、滩涂开发极其敏感，种群数量直接反映一片水域的生态健康程度。我国多数水鸟列入三有保护动物或国家二级保护名录，严禁毒杀、网捕、投饵诱捕等伤害行为，湿地栖息地保护是维系候鸟种群存续的核心关键。</p>
+    <a href="bird.html" class="back-index">← 返回鸟类总专区首页</a>
+</section>
+
+<section>
+    <h2 class="common-title">三大代表候鸟水鸟物种</h2>
+    <div class="line"></div>
+    <div class="species-grid">
+        <div class="species-card">
+            <img src="https://picsum.photos/id/1036/600/320" alt="大天鹅">
+            <div class="species-content">
+                <h3>大天鹅</h3>
+                <p><strong>保护级别：国家二级保护动物</strong></p>
+                <p>通体雪白修长，脖颈曲线优雅，每年深秋从西伯利亚集群迁徙至我国内陆湖泊越冬。天鹅大多终生维持单一配偶关系，对水质洁净度要求极高，水域一旦出现污染便会放弃该栖息区域。</p>
+            </div>
+        </div>
+        <div class="species-card">
+            <img src="https://picsum.photos/id/1038/600/320" alt="红嘴鸥">
+            <div class="species-content">
+                <h3>红嘴鸥</h3>
+                <p><strong>保护级别：三有保护动物</strong></p>
+                <p>每年冬季大规模聚集昆明、青岛等滨水城市，性格亲人常接受游客投喂。主食小鱼与水生浮游生物，能够清理水域小型有害生物，春季会集体北迁前往东北湿地繁衍后代。</p>
+            </div>
+        </div>
+        <div class="species-card">
+            <img src="https://picsum.photos/id/1041/600/320" alt="鸿雁">
+            <div class="species-content">
+                <h3>鸿雁（大雁）</h3>
+                <p><strong>保护级别：国家二级保护动物</strong></p>
+                <p>经典列队迁徙候鸟，依靠人字、一字编队飞行削减气流阻力，长途往返于西伯利亚与我国南方湿地。鸿雁是家鹅的原生祖先，野生种群禁止捕猎食用，栖息地缩减已经造成种群数量逐年下降。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bird-eco">
+    <h2 class="common-title">湿地生态与候鸟保护科普</h2>
+    <div class="line"></div>
+    <p class="eco-desc">填湖造田、沿海滩涂开发、污水直排、人为投放变质零食投喂水鸟，都会直接破坏候鸟生存环境。膨化食品、高盐辣条会严重损伤鸟类肠胃，极易引发批量死亡。多地设立候鸟自然保护区，划定禁猎禁扰区域，杜绝非法捕鸟网具，保障迁徙路线上的补给栖息地完整，才能让千万候鸟年年如期归来。</p>
+</section>
+
+<footer>
+    ©2026 动物世界科普平台 Bird Encyclopedia
+</footer>
+
+<a href="#top" class="top-btn">↑</a>
+
+<script>
+window.addEventListener("scroll",()=>{
+  let nav = document.getElementById("nav");
+  if(window.scrollY>50){
+    nav.classList.add("scrolled");
+  }else{
+    nav.classList.remove("scrolled");
+  }
+});
+</script>
+</body>
+</html>

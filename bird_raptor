@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猛禽鸟类详情 | 飞禽鸟类专区</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bird.css">
+</head>
+<body>
+<header class="nav-header">
+    <nav class="navbar">
+        <div class="logo">动物世界科普平台</div>
+        <ul class="nav-list">
+            <li><a href="index.html">网站首页</a></li>
+            <li><a href="land.html">陆生动物</a></li>
+            <li><a href="sea.html">海洋生物</a></li>
+            <li><a href="bird.html" class="active">飞禽鸟类</a></li>
+            <li><a href="protect.html">动物保护</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+    <div class="page-title">
+        <h1>🦅 猛禽鸟类详情介绍</h1>
+        <p>昼行与夜行肉食猛禽，拥有极强视力与捕猎能力，是自然生态的天敌调控者</p>
+        <a href="bird.html">← 返回鸟类分类总页</a>
+    </div>
+
+    <div class="animal-card-wrap">
+        <div class="animal-card">
+            <img src="" alt="苍鹰" style="width:100%;border-radius:10px;margin-bottom:14px;object-fit:cover;">
+            <h3>苍鹰</h3>
+            <p>典型日间活动猛禽，双翼宽大适合高空盘旋巡查，依靠顶尖视力锁定野兔、鼠类与小型鸟类，是林地生态里顶级捕食者。</p>
+        </div>
+        <div class="animal-card">
+            <img src="" alt="长耳猫头鹰" style="width:100%;border-radius:10px;margin-bottom:14px;object-fit:cover;">
+            <h3>长耳猫头鹰</h3>
+            <p>经典夜行猛禽，头顶耳羽可以聚拢声波，在无光环境精准定位田鼠，大量消灭农田害鼠，国内所有猫头鹰均属于受保护野生动物。</p>
+        </div>
+    </div>
+
+    <section class="tips-block">
+        <h2>猛禽保护提示</h2>
+        <ul>
+            <li>我国所有野生猛禽全部列入国家保护动物名录，严禁捕猎饲养</li>
+            <li>发现受伤老鹰、猫头鹰，不要私自喂养，直接联系林业部门救助</li>
+        </ul>
+    </section>
+</main>
+
+<footer class="footer">
+    <p>© 2026 动物世界科普项目</p>
+</footer>
+</body>
+</html>

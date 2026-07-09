@@ -6,6 +6,25 @@
     <title>飞禽鸟类专区 | 动物世界科普网站</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="bird.css">
+    <style>
+        /* 主页专属飞鸟淡背景，不改动公共bird.css */
+        body {
+            background-image: url('https://picsum.photos/id/1044/1920/1080');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-color: rgba(247, 251, 249, 0.92);
+            background-blend-mode: overlay;
+        }
+        .page-title{
+            background: rgba(255,255,255,0.75);
+            padding:24px 16px;
+            border-radius:16px;
+        }
+        .tips-block{
+            background: rgba(232, 243, 238, 0.88);
+        }
+    </style>
 </head>
 <body>
 <header class="nav-header">
@@ -23,45 +42,49 @@
 
 <main class="container">
     <div class="page-title">
-        <h1>翱翔天际 · 飞禽鸟类总专区</h1>
-        <p>依照生态习性分为四大类别，点击卡片进入对应详情介绍</p>
+        <h1>🌤️ 翱翔天际 · 飞禽鸟类科普专区</h1>
+        <p>羽翼乘风，生灵振翅，一同探索天空之中多样的鸟类生灵</p>
     </div>
 
     <div class="animal-card-wrap">
         <div class="animal-card">
-            <h3>🦅 猛禽鸟类</h3>
-            <p>掠食性飞鸟，利爪锐喙，处于食物链上层，包含老鹰、猫头鹰等捕猎型鸟类</p>
-            <a href="bird_raptor.html" class="card-btn">查看详情</a>
+            <img src="https://picsum.photos/id/1024/600/320" alt="猛禽鸟类" style="width:100%;border-radius:10px;margin-bottom:14px;object-fit:cover;">
+            <h3>🦅 掠食猛禽</h3>
+            <p>拥有锋利爪喙与超强视力，居于食物链顶层，以捕猎小型动物为生</p>
+            <a href="bird_raptor.html" class="card-btn">查看三种猛禽详情</a>
         </div>
         <div class="animal-card">
-            <h3>🦜 观赏鸟类</h3>
-            <p>羽色艳丽、外形独特，常作为观赏品种，代表：孔雀、各类鹦鹉</p>
-            <a href="bird_view.html" class="card-btn">查看详情</a>
+            <img src="https://picsum.photos/id/1062/600/320" alt="观赏鸟类" style="width:100%;border-radius:10px;margin-bottom:14px;object-fit:cover;">
+            <h3>🦜 观赏珍鸟</h3>
+            <p>羽色斑斓外形优美，常被人工繁育观赏，野生个体大多受法律保护</p>
+            <a href="bird_view.html" class="card-btn">查看三种观赏鸟类</a>
         </div>
         <div class="animal-card">
-            <h3>🦢 候鸟水鸟</h3>
-            <p>依赖水域生存，随季节长途迁徙，代表物种：天鹅、海鸥、大雁</p>
-            <a href="bird_migrate.html" class="card-btn">查看详情</a>
+            <img src="https://picsum.photos/id/1036/600/320" alt="候鸟水鸟" style="width:100%;border-radius:10px;margin-bottom:14px;object-fit:cover;">
+            <h3>🦢 迁徙候鸟水鸟</h3>
+            <p>依赖水域栖息，春秋跨越千里迁徙，是湿地生态环境的指示物种</p>
+            <a href="bird_migrate.html" class="card-btn">查看三种候鸟水鸟</a>
         </div>
         <div class="animal-card">
+            <img src="https://picsum.photos/id/1048/600/320" alt="珍稀保护鸟类" style="width:100%;border-radius:10px;margin-bottom:14px;object-fit:cover;">
             <h3>🕊️ 国家珍稀保护鸟类</h3>
-            <p>种群数量稀少，列入国家一、二级保护名录，严禁捕捉伤害</p>
-            <a href="bird_rare.html" class="card-btn">查看详情</a>
+            <p>野外种群濒临稀缺，列入国家一二级保护名录，受法律严格保护</p>
+            <a href="bird_rare.html" class="card-btn">查看三种国宝级鸟类</a>
         </div>
     </div>
 
     <section class="tips-block">
         <h2>鸟类保护倡议</h2>
         <ul>
-            <li>不私自捕捉、笼养野生鸟类，拒绝野生鸟贩交易</li>
-            <li>遇到受伤野鸟优先联系当地野生动物救助机构</li>
-            <li>减少户外随意丢弃塑料袋，避免鸟类误食缠绕</li>
+            <li>拒绝购买、捕捉野生鸟类，抵制非法野鸟贸易，不私自笼养野生飞禽</li>
+            <li>偶遇受伤、落单幼鸟或成鸟，优先联系当地林业部门与野生动物救助站</li>
+            <li>减少随意丢弃塑料垃圾，避免鸟类误食塑料袋、尼龙绳造成缠绕窒息</li>
         </ul>
     </section>
 </main>
 
 <footer class="footer">
-    <p>© 2026 动物世界科普项目 | GitHub Pages 静态网站</p>
+    <p>© 2026 动物世界科普项目 | GitHub Pages 静态科普站点</p>
 </footer>
 </body>
 </html>

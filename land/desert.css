@@ -380,3 +380,68 @@ footer{
     .banner-content h1{font-size:34px;}
     .common-title{font-size:30px;}
 }
+/* =================== 荒漠环境分层板块 =================== */
+.desert-zone {
+    width: 100%;
+    background: #17212f;
+    padding: 80px 15%;
+}
+.desert-layers {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.layer-item {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    background: #1e2937;
+    border-radius: 22px;
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.4);
+    transition: .4s;
+}
+.layer-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(134,239,172,0.15);
+}
+.layer-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+.layer-image {
+    flex: 1;
+    min-width: 320px;
+    border-radius: 18px;
+    overflow: hidden;
+}
+.layer-image img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    transition: .5s;
+}
+.layer-text {
+    flex: 1;
+    min-width: 320px;
+}
+.layer-depth {
+    display: inline-block;
+    margin-bottom: 18px;
+    padding: 6px 18px;
+    border-radius: 30px;
+    background: #166534;
+    color: #86efac;
+    font-weight: bold;
+    font-size: 15px;
+}
+.layer-text h3 {
+    color: #86efac;
+    font-size: 26px;
+    margin-bottom: 16px;
+}
+.layer-text p {
+    font-size: 16.5px;
+    line-height: 32px;
+    color: #cbd5e1;
+}

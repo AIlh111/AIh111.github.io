@@ -7,130 +7,86 @@
     <link rel="stylesheet" href="land.css">
 </head>
 <body>
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="../index.html" class="logo">🌍 动物世界</a>
-            <div class="nav-menu">
-                <a href="../index.html">首页</a>
-                <a href="land.html" class="active">陆地动物</a>
-                <a href="../sea/sea.html">海洋生物</a>
-                <a href="../bird.html">飞禽鸟类</a>
-                <a href="../protect.html">动物保护</a>
-            </div>
-        </div>
-    </nav>
+<div id="top"></div>
 
-    <div class="hero">
+<nav id="nav">
+  <div>🌍 动物世界</div>
+  <div>
+    <a href="../index.html">首页</a>
+    <a href="land.html" class="active">陆地</a>
+    <a href="../sea/sea.html">海洋</a>
+    <a href="../bird.html">鸟类</a>
+    <a href="../protect.html">保护</a>
+  </div>
+</nav>
+
+<!-- =================== Banner =================== -->
+<section class="land-banner">
+    <div class="banner-mask"></div>
+    <div class="banner-content">
         <h1>陆地野生动物</h1>
         <p>探索地球陆地生态的奇妙生灵</p>
     </div>
 
-    <main class="container">
-
+    <div class="category-area">
         <!-- 草原动物 -->
-        <section class="section">
-            <h2 class="section-title">🌾 草原动物</h2>
-            <div class="grid">
-                <div class="card" onclick="window.location.href='pages/grassland.html'">
-                    <img src="images/lion.jpg" alt="非洲狮">
-                    <div class="card-content">
-                        <h3>非洲狮</h3>
-                        <p>草原之王，群居生活，顶级捕食者。</p>
-                    </div>
-                </div>
-                <div class="card" onclick="window.location.href='pages/grassland.html'">
-                    <img src="images/zebra.jpg" alt="斑马">
-                    <div class="card-content">
-                        <h3>斑马</h3>
-                        <p>黑白条纹是其独特标志，群居奔跑。</p>
-                    </div>
-                </div>
-                <div class="card" onclick="window.location.href='pages/grassland.html'">
-                    <img src="images/elephant.jpg" alt="非洲象">
-                    <div class="card-content">
-                        <h3>非洲象</h3>
-                        <p>陆地上最大的陆生动物，社会性强。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="glass-card">
+            <img src="images/grassland.jpg" alt="草原动物">
+            <h3>草原动物</h3>
+            <p>狮子、斑马、大象等，生活在广阔草原上的奔跑者。</p>
+            <a href="pages/grassland.html"><button>立即探索</button></a>
+        </div>
 
         <!-- 森林动物 -->
-        <section class="section">
-            <h2 class="section-title">🌲 森林动物</h2>
-            <div class="grid">
-                <div class="card" onclick="window.location.href='pages/forest.html'">
-                    <img src="images/panda.jpg" alt="大熊猫">
-                    <div class="card-content">
-                        <h3>大熊猫</h3>
-                        <p>中国国宝，濒危物种，主要以竹子为食。</p>
-                    </div>
-                </div>
-                <div class="card" onclick="window.location.href='pages/forest.html'">
-                    <img src="images/deer.jpg" alt="梅花鹿">
-                    <div class="card-content">
-                        <h3>梅花鹿</h3>
-                        <p>优雅的森林精灵，梅花状斑点。</p>
-                    </div>
-                </div>
-                <div class="card" onclick="window.location.href='pages/forest.html'">
-                    <img src="images/monkey.jpg" alt="金丝猴">
-                    <div class="card-content">
-                        <h3>金丝猴</h3>
-                        <p>珍稀灵长类，毛色金黄。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="glass-card">
+            <img src="images/forest.jpg" alt="森林动物">
+            <h3>森林动物</h3>
+            <p>大熊猫、小鹿、金丝猴等，栖息于茂密森林的精灵。</p>
+            <a href="pages/forest.html"><button>立即探索</button></a>
+        </div>
 
         <!-- 荒漠动物 -->
-        <section class="section">
-            <h2 class="section-title">🏜️ 荒漠动物</h2>
-            <div class="grid">
-                <div class="card" onclick="window.location.href='pages/desert.html'">
-                    <img src="images/camel.jpg" alt="骆驼">
-                    <div class="card-content">
-                        <h3>双峰骆驼</h3>
-                        <p>沙漠之舟，能长时间耐饥渴。</p>
-                    </div>
-                </div>
-                <div class="card" onclick="window.location.href='pages/desert.html'">
-                    <img src="images/fox.jpg" alt="耳廓狐">
-                    <div class="card-content">
-                        <h3>耳廓狐</h3>
-                        <p>耳朵巨大，适应沙漠炎热环境。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="glass-card">
+            <img src="images/desert.jpg" alt="荒漠动物">
+            <h3>荒漠动物</h3>
+            <p>骆驼、耳廓狐、蜥蜴等，适应干旱环境的生存专家。</p>
+            <a href="pages/desert.html"><button>立即探索</button></a>
+        </div>
 
         <!-- 极地动物 -->
-        <section class="section">
-            <h2 class="section-title">❄️ 极地陆地动物</h2>
-            <div class="grid">
-                <div class="card" onclick="window.location.href='pages/polar.html'">
-                    <img src="images/polar-bear.jpg" alt="北极熊">
-                    <div class="card-content">
-                        <h3>北极熊</h3>
-                        <p>北极的顶级捕食者，依赖海冰生存。</p>
-                    </div>
-                </div>
-                <div class="card" onclick="window.location.href='pages/polar.html'">
-                    <img src="images/arctic-fox.jpg" alt="北极狐">
-                    <div class="card-content">
-                        <h3>北极狐</h3>
-                        <p>毛色随季节变化，适应极寒环境。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="glass-card">
+            <img src="images/polar.jpg" alt="极地动物">
+            <h3>极地动物</h3>
+            <p>北极熊、北极狐等，在严寒极地顽强生存的勇士。</p>
+            <a href="pages/polar.html"><button>立即探索</button></a>
+        </div>
+    </div>
+</section>
 
-    </main>
+<!-- =================== 介绍 =================== -->
+<section class="intro">
+    <h2>探索陆地生命</h2>
+    <div class="line"></div>
+    <p>陆地占地球表面积约29%，却孕育了无数神奇的野生动物。从一望无际的草原，到茂密的原始森林，再到极寒的极地，每一片土地都承载着独特的生命故事。</p>
+</section>
 
-    <footer>
-        <p>动物世界科普网站 © 2026 | 陆地野生动物专区</p>
-    </footer>
+<footer>
+    ©2026 陆地野生动物专区 Land Animal Encyclopedia
+</footer>
 
-    <script src="land.js"></script>
+<!-- 返回顶部 -->
+<a href="#top" class="top-btn">↑</a>
+
+<!-- 导航滚动变色JS -->
+<script>
+window.addEventListener("scroll",()=>{
+  let nav = document.getElementById("nav");
+  if(window.scrollY>50){
+    nav.classList.add("scrolled");
+  }else{
+    nav.classList.remove("scrolled");
+  }
+});
+</script>
 </body>
 </html>

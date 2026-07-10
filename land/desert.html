@@ -6,7 +6,6 @@
     <title>荒漠动物专题 | 陆地野生动物</title>
     <link rel="stylesheet" href="../land.css">
     <style>
-        /* 深色陆地风格 */
         #nav { background-color: rgba(15,23,42,0.95); }
         #nav.scrolled { background-color: #1e2937; }
         #nav a.active { color: #86efac; border-bottom: 4px solid #86efac; }
@@ -14,7 +13,7 @@
         .desert-banner {
             width: 100%; height: 60vh; margin-top: 64px; position: relative;
             background-image: url('land/images/desert1.jpg');
-            background-size: cover; background-position: center; background-attachment: fixed;
+            background-size: cover; background-position: center;
         }
         .banner-mask { width: 100%; height: 100%; background-color: rgba(15,23,42,0.6); }
         .banner-content h1 { color: #86efac; }
@@ -23,23 +22,7 @@
         .line { width: 80px; height: 3px; background-color: #4ade80; margin: 0 auto 30px; }
 
         .intro p, .eco-desc { color: #cbd5e1; line-height: 1.8; }
-
-        .species-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
-        }
-        .species-card {
-            background: #1e2937;
-            border: 1px solid rgba(134,239,172,0.2);
-            border-radius: 16px;
-            overflow: hidden;
-        }
-        .species-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
+        .species-card { background: #1e2937; border: 1px solid rgba(134,239,172,0.2); }
     </style>
 </head>
 <body>
@@ -65,66 +48,68 @@
 <section class="intro">
     <h2 class="common-title">荒漠动物类群概述</h2>
     <div class="line"></div>
-    <p>荒漠是地球上最严酷的陆地环境之一，水资源极度匮乏，昼夜温差极大。生活在其中的动物进化出了惊人的适应能力，如高效储水、夜行习性、沙地伪装等。</p>
-    <a href="../land.html" class="back-index" style="color:#86efac;">← 返回陆地动物总专区</a>
+    <p>荒漠是地球上最严酷的陆地环境之一，水资源极度匮乏，昼夜温差极大。生活在其中的动物进化出了惊人的适应能力，它们是自然界顽强生命的象征。</p>
+    
+    <img src="land/images/desert-landscape.jpg" alt="荒漠景观" style="width:100%; border-radius:16px; margin:30px 0;"> <!-- ← 大图1 -->
+    
+    <p>这些动物不仅适应了极端环境，还在维持荒漠生态平衡中扮演重要角色。</p>
 </section>
 
 <section>
-    <h2 class="common-title">荒漠生存代表动物</h2>
+    <h2 class="common-title">荒漠动物生存策略</h2>
     <div class="line"></div>
-    <div class="species-grid" style="max-width:1200px;margin:0 auto;padding:0 24px;">
-        <div class="species-card">
-            <img src="land/images/camel.jpg" alt="双峰骆驼">
-            <div class="species-content" style="padding:24px;">
-                <h3>双峰骆驼</h3>
-                <p><strong>沙漠之舟</strong></p>
-                <p>驼峰储存脂肪，能长时间耐饥渴，是荒漠中最著名的适应者。</p>
-            </div>
+    
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;">
+        <div>
+            <img src="land/images/camel.jpg" alt="双峰骆驼" style="width:100%; border-radius:16px;"> <!-- ← 图2 -->
+            <h3 style="color:#86efac;margin:15px 0 10px;">双峰骆驼</h3>
+            <p>被称为“沙漠之舟”，驼峰中储存脂肪，能在长时间缺水缺食的情况下生存。</p>
         </div>
-        <div class="species-card">
-            <img src="land/images/fox.jpg" alt="耳廓狐">
-            <div class="species-content" style="padding:24px;">
-                <h3>耳廓狐</h3>
-                <p><strong>夜行小猎手</strong></p>
-                <p>巨大的耳朵帮助散热和捕捉声音，夜间活动捕猎昆虫和小动物。</p>
-            </div>
+        <div>
+            <img src="land/images/fox.jpg" alt="耳廓狐" style="width:100%; border-radius:16px;"> <!-- ← 图3 -->
+            <h3 style="color:#86efac;margin:15px 0 10px;">耳廓狐</h3>
+            <p>巨大的耳朵帮助散热和捕捉声音，是夜行小猎手。</p>
         </div>
     </div>
 </section>
 
 <section class="feature-wrap">
-    <h2 class="common-title">荒漠动物生存关键特征</h2>
+    <h2 class="common-title">荒漠动物关键特征</h2>
     <div class="line"></div>
-    <div style="max-width:1000px;margin:0 auto;padding:0 24px;">
-        <ul style="color:#cbd5e1; line-height:1.8; padding-left:20px;">
-            <li><strong>高效储水机制</strong>：从食物中获取水分，减少水分流失。</li>
-            <li><strong>夜行习性</strong>：白天躲避高温，夜晚活动觅食。</li>
-            <li><strong>沙地伪装</strong>：体色与沙地接近，脚掌适合在沙地上行走。</li>
-            <li><strong>耐极端温差</strong>：特殊的生理结构帮助它们忍受白天高温和夜晚低温。</li>
-        </ul>
+    <ul style="color:#cbd5e1; line-height:1.8; padding-left:20px; max-width:1000px; margin:0 auto;">
+        <li><strong>高效储水机制</strong>：从食物中获取水分，肾脏高度浓缩尿液。</li>
+        <li><strong>夜行习性</strong>：白天躲避高温，夜晚活动觅食。</li>
+        <li><strong>沙地伪装与移动能力</strong>：体色与沙地接近，脚掌宽大适合在沙地上行走。</li>
+        <li><strong>耐极端温差</strong>：特殊的生理结构帮助它们忍受白天高温和夜晚低温。</li>
+    </ul>
+</section>
+
+<section class="species-wrap">
+    <h2 class="common-title">更多荒漠代表动物</h2>
+    <div class="line"></div>
+    <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;">
+        <div class="species-card">
+            <img src="land/images/lizard.jpg" alt="沙漠蜥蜴">
+            <div class="species-content" style="padding:24px;">
+                <h3>沙漠蜥蜴</h3>
+                <p>体色与沙地一致，善于在沙中隐藏和快速移动。</p>
+            </div>
+        </div>
+        <!-- 可继续添加更多卡片 -->
     </div>
 </section>
 
 <section class="eco-wrap">
     <h2 class="common-title">荒漠生态保护意义</h2>
     <div class="line"></div>
-    <p class="eco-desc">荒漠生态非常脆弱，一旦破坏很难恢复。保护这些适应力极强的动物，就是保护干旱区生态平衡，防止土地进一步荒漠化。</p>
+    <p class="eco-desc">荒漠生态非常脆弱，保护这些适应力极强的动物，就是保护干旱区生态平衡，防止土地进一步荒漠化。</p>
 </section>
 
-<footer>
-    ©2026 动物世界科普平台
-</footer>
+<footer>©2026 动物世界科普平台</footer>
 <a href="#top" class="top-btn">↑</a>
 
 <script>
-window.addEventListener("scroll",()=>{
-  let nav = document.getElementById("nav");
-  if(window.scrollY>50){
-    nav.classList.add("scrolled");
-  }else{
-    nav.classList.remove("scrolled");
-  }
-});
+window.addEventListener("scroll",()=>{ let nav = document.getElementById("nav"); if(window.scrollY>50) nav.classList.add("scrolled"); else nav.classList.remove("scrolled"); });
 </script>
 </body>
 </html>

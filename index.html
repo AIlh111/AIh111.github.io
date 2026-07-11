@@ -10,38 +10,41 @@
 <body>
 
 <!-- 顶部导航栏 -->
-<nav id="nav">
+<header class="top-nav" id="topNav">
   <div class="logo">🐾 动物世界百科</div>
 
-  <div class="nav-links">
+  <nav class="nav-links">
     <a href="index.html">首页</a>
     <a href="land.html">陆地动物</a>
     <a href="sea.html">海洋动物</a>
     <a href="bird.html">鸟类动物</a>
     <a href="protect.html">动物保护</a>
-  </div>
-</nav>
+  </nav>
+</header>
 
 <!-- 首页轮播 Banner -->
-<section class="banner">
+<section class="hero">
 
-  <img class="slide active" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="全球自然风光">
-  <img class="slide" src="https://images.unsplash.com/photo-1546182990-dffeafbe841d" alt="草原狮子">
-  <img class="slide" src="https://images.unsplash.com/photo-1508672019048-805c876b67e2" alt="森林动物">
-  <img class="slide" src="https://images.unsplash.com/photo-1516467508483-a7212febe31a" alt="野生动物群">
+  <div class="slider">
+    <img class="slide active" src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=1800&q=80" alt="狮子">
+    <img class="slide" src="https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?auto=format&fit=crop&w=1800&q=80" alt="熊猫">
+    <img class="slide" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80" alt="自然动物栖息地">
+    <img class="slide" src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1800&q=80" alt="动物世界">
+  </div>
 
-  <div class="banner-mask"></div>
+  <div class="hero-mask"></div>
 
-  <div class="hero-text">
+  <div class="hero-content">
+    <p class="hero-tag">Animal World Encyclopedia</p>
     <h1>探索地球上的生命奇迹</h1>
-    <p>从陆地、海洋到天空，一起走进丰富多彩的动物世界</p>
+    <p class="hero-desc">从草原、森林、海洋到天空，一起走进丰富多彩的动物世界。</p>
 
     <div class="search-box">
-      <input id="searchInput" type="text" placeholder="搜索动物或分类，例如：狮子、熊猫、鲸鱼、老鹰、保护">
+      <input id="searchInput" type="text" placeholder="搜索动物或分类：狮子、熊猫、鲸鱼、老鹰、保护">
       <button id="searchBtn">搜索</button>
     </div>
 
-    <div class="hot-keywords">
+    <div class="hot-search">
       <span>热门搜索：</span>
       <button class="hot-word">狮子</button>
       <button class="hot-word">熊猫</button>
@@ -50,32 +53,48 @@
       <button class="hot-word">保护</button>
     </div>
   </div>
-</section>
 
-<!-- 地球动物总览 -->
-<section class="intro-section">
-  <div class="section-title">
-    <h2>🌍 地球动物总览</h2>
-    <p>不同环境孕育出不同动物，它们共同维持着地球生态平衡。</p>
+  <div class="slider-dots">
+    <span class="dot active-dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
   </div>
 
-  <div class="intro-grid">
-    <div class="intro-card">
+</section>
+
+<!-- 搜索结果区域 -->
+<section id="searchResult" class="search-result"></section>
+
+<!-- 地球动物总览 -->
+<section class="overview">
+  <div class="section-title">
+    <span>Global Animal Overview</span>
+    <h2>🌍 地球动物总览</h2>
+    <p>不同生态环境孕育出不同动物，它们共同维持着地球生态系统的稳定与平衡。</p>
+  </div>
+
+  <div class="overview-grid">
+    <div class="overview-card">
+      <div class="overview-icon">🌲</div>
       <h3>森林生态</h3>
       <p>森林为熊猫、猴子、小鹿等动物提供栖息地，也是生物多样性最丰富的区域之一。</p>
     </div>
 
-    <div class="intro-card">
+    <div class="overview-card">
+      <div class="overview-icon">🦁</div>
       <h3>草原生态</h3>
       <p>草原是狮子、斑马、大象等动物生活的重要区域，动物之间形成复杂的食物链关系。</p>
     </div>
 
-    <div class="intro-card">
+    <div class="overview-card">
+      <div class="overview-icon">🌊</div>
       <h3>海洋生态</h3>
       <p>海洋覆盖地球大部分面积，鲸鱼、海豚、珊瑚礁生物共同组成神秘的蓝色世界。</p>
     </div>
 
-    <div class="intro-card">
+    <div class="overview-card">
+      <div class="overview-icon">🦅</div>
       <h3>天空生态</h3>
       <p>鸟类依靠飞行能力迁徙、捕食和繁衍，是连接陆地、湿地和天空的重要生命群体。</p>
     </div>
@@ -83,174 +102,222 @@
 </section>
 
 <!-- 动物分类导航 -->
-<section class="category-section">
+<section class="category">
   <div class="section-title">
+    <span>Animal Categories</span>
     <h2>📚 动物分类导航</h2>
-    <p>点击下方卡片进入不同动物专区。</p>
+    <p>点击下方卡片进入不同动物专区，浏览更多图文内容。</p>
   </div>
 
-  <div class="cards">
+  <div class="category-grid">
 
-    <a class="card" href="land.html">
-      <div class="card-icon">🐘</div>
-      <h3>陆地动物</h3>
-      <p>草原、森林、荒漠、极地动物</p>
-      <span>进入专区 →</span>
+    <a class="category-card" href="land.html">
+      <div class="category-img land-bg"></div>
+      <div class="category-text">
+        <h3>🐘 陆地动物</h3>
+        <p>草原、森林、荒漠、极地动物</p>
+        <span>进入专区 →</span>
+      </div>
     </a>
 
-    <a class="card" href="sea.html">
-      <div class="card-icon">🐋</div>
-      <h3>海洋动物</h3>
-      <p>深海鱼类、鲸鱼、海豚、珊瑚礁生物</p>
-      <span>进入专区 →</span>
+    <a class="category-card" href="sea.html">
+      <div class="category-img sea-bg"></div>
+      <div class="category-text">
+        <h3>🐋 海洋动物</h3>
+        <p>深海鱼类、鲸鱼、海豚、珊瑚礁生物</p>
+        <span>进入专区 →</span>
+      </div>
     </a>
 
-    <a class="card" href="bird.html">
-      <div class="card-icon">🦅</div>
-      <h3>鸟类动物</h3>
-      <p>猛禽、观赏鸟、候鸟、珍稀保护鸟类</p>
-      <span>进入专区 →</span>
+    <a class="category-card" href="bird.html">
+      <div class="category-img bird-bg"></div>
+      <div class="category-text">
+        <h3>🦅 鸟类动物</h3>
+        <p>猛禽、观赏鸟、候鸟、珍稀保护鸟类</p>
+        <span>进入专区 →</span>
+      </div>
     </a>
 
-    <a class="card" href="protect.html">
-      <div class="card-icon">🌱</div>
-      <h3>动物保护</h3>
-      <p>濒危动物、保护知识、公益科普</p>
-      <span>进入专区 →</span>
+    <a class="category-card" href="protect.html">
+      <div class="category-img protect-bg"></div>
+      <div class="category-text">
+        <h3>🌱 动物保护</h3>
+        <p>濒危动物、保护知识、公益科普</p>
+        <span>进入专区 →</span>
+      </div>
     </a>
 
   </div>
 </section>
 
-<!-- 搜索结果区域 -->
-<section id="searchResult" class="search-result"></section>
-
-<!-- 页脚 -->
 <footer>
   <p>© 2026 动物世界百科 | 保护动物，守护地球生命</p>
 </footer>
 
 <script>
-/* ===== 轮播图功能 ===== */
-let slides = document.querySelectorAll(".slide");
-let slideIndex = 0;
+/* =========================
+   轮播图功能
+========================= */
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
+let currentIndex = 0;
 
-setInterval(() => {
-  slides[slideIndex].classList.remove("active");
-  slideIndex = (slideIndex + 1) % slides.length;
-  slides[slideIndex].classList.add("active");
-}, 3500);
+function showSlide(index) {
+  slides[currentIndex].classList.remove("active");
+  dots[currentIndex].classList.remove("active-dot");
+
+  currentIndex = index;
+
+  slides[currentIndex].classList.add("active");
+  dots[currentIndex].classList.add("active-dot");
+}
+
+function nextSlide() {
+  let nextIndex = (currentIndex + 1) % slides.length;
+  showSlide(nextIndex);
+}
+
+let slideTimer = setInterval(nextSlide, 3500);
+
+dots.forEach((dot, index) => {
+  dot.addEventListener("click", () => {
+    clearInterval(slideTimer);
+    showSlide(index);
+    slideTimer = setInterval(nextSlide, 3500);
+  });
+});
 
 
-/* ===== 导航栏滚动变色 ===== */
+/* =========================
+   导航栏滚动变色
+========================= */
 window.addEventListener("scroll", () => {
-  const nav = document.getElementById("nav");
+  const topNav = document.getElementById("topNav");
 
   if (window.scrollY > 60) {
-    nav.classList.add("scrolled");
+    topNav.classList.add("nav-scrolled");
   } else {
-    nav.classList.remove("scrolled");
+    topNav.classList.remove("nav-scrolled");
   }
 });
 
 
-/* ===== 首页搜索数据库：只修改 index.html 即可实现搜索 ===== */
+/* =========================
+   搜索数据库
+   只修改 index.html 即可实现搜索
+========================= */
 const animalData = [
   {
     name: "陆地动物",
     keywords: "陆地 草原 森林 荒漠 极地 狮子 斑马 大象 熊猫 小鹿 猴子 金丝猴 骆驼 狐狸 耳廓狐 蜥蜴 北极熊 北极狐",
     desc: "陆地动物包括草原动物、森林动物、荒漠动物和极地陆地动物。",
-    url: "land.html"
+    url: "land.html",
+    icon: "🐘"
   },
   {
     name: "草原动物",
     keywords: "草原 狮子 斑马 大象 非洲草原 食肉动物 食草动物",
     desc: "草原动物包括狮子、斑马、大象等，它们构成典型的草原生态系统。",
-    url: "land/grassland.html"
+    url: "land/grassland.html",
+    icon: "🦁"
   },
   {
     name: "森林动物",
     keywords: "森林 熊猫 大熊猫 小鹿 猴子 金丝猴 树林",
     desc: "森林动物包括大熊猫、小鹿、猴子等，它们依赖森林环境生存。",
-    url: "land/forest.html"
+    url: "land/forest.html",
+    icon: "🐼"
   },
   {
     name: "荒漠动物",
     keywords: "荒漠 沙漠 骆驼 狐狸 耳廓狐 蜥蜴 干旱",
     desc: "荒漠动物具有耐旱、耐热等适应能力，例如骆驼、耳廓狐和蜥蜴。",
-    url: "land/desert.html"
+    url: "land/desert.html",
+    icon: "🐪"
   },
   {
     name: "极地陆地动物",
     keywords: "极地 北极熊 北极狐 冰雪 寒冷 冰原",
     desc: "极地动物生活在寒冷环境中，具有厚毛、脂肪层等保温结构。",
-    url: "land/polar.html"
+    url: "land/polar.html",
+    icon: "🐻‍❄️"
   },
   {
     name: "海洋动物",
     keywords: "海洋 水生 深海 鱼类 鲸鱼 海豚 鲨鱼 珊瑚礁 章鱼 水母 海星 海胆 海豹",
     desc: "海洋动物包括深海鱼类、海洋哺乳动物、珊瑚礁生物等。",
-    url: "sea.html"
+    url: "sea.html",
+    icon: "🐋"
   },
   {
     name: "深海鱼类",
     keywords: "深海 鱼类 发光鱼 深海鱼 高压 黑暗",
     desc: "深海鱼类生活在高压、黑暗的深海环境中，常具有特殊发光器官。",
-    url: "sea/pages/deepsea.html"
+    url: "sea/pages/deepsea.html",
+    icon: "🐟"
   },
   {
     name: "海洋哺乳动物",
     keywords: "鲸鱼 蓝鲸 海豚 海豹 哺乳动物 海洋哺乳动物",
     desc: "鲸鱼、海豚、海豹等属于海洋哺乳动物，它们用肺呼吸。",
-    url: "sea/pages/mammal.html"
+    url: "sea/pages/mammal.html",
+    icon: "🐬"
   },
   {
     name: "珊瑚礁生物",
     keywords: "珊瑚礁 珊瑚 小丑鱼 海葵 热带海洋",
     desc: "珊瑚礁是海洋中生物多样性非常高的生态系统。",
-    url: "sea/pages/coral.html"
+    url: "sea/pages/coral.html",
+    icon: "🪸"
   },
   {
     name: "海洋无脊椎动物",
     keywords: "章鱼 水母 海星 海胆 无脊椎动物 软体动物",
     desc: "海洋无脊椎动物包括章鱼、水母、海星、海胆等。",
-    url: "sea/pages/invertebrate.html"
+    url: "sea/pages/invertebrate.html",
+    icon: "🐙"
   },
   {
     name: "鸟类动物",
     keywords: "鸟类 飞禽 老鹰 猫头鹰 孔雀 鹦鹉 天鹅 海鸥 候鸟 水鸟 朱鹮 丹顶鹤 珍稀鸟类",
     desc: "鸟类动物包括猛禽、观赏鸟类、候鸟水鸟和珍稀保护鸟类。",
-    url: "bird.html"
+    url: "bird.html",
+    icon: "🦅"
   },
   {
     name: "猛禽",
     keywords: "猛禽 老鹰 鹰 猫头鹰 苍鹰 金雕 捕食",
     desc: "猛禽通常具有锐利的爪、强壮的喙和优秀的捕食能力。",
-    url: "bird_raptor.html"
+    url: "bird_raptor.html",
+    icon: "🦉"
   },
   {
     name: "观赏鸟类",
     keywords: "观赏鸟 孔雀 鹦鹉 画眉 羽毛 漂亮",
     desc: "观赏鸟类外形美丽，常具有鲜艳羽毛和独特叫声。",
-    url: "bird_view.html"
+    url: "bird_view.html",
+    icon: "🦚"
   },
   {
     name: "候鸟水鸟",
     keywords: "候鸟 水鸟 天鹅 海鸥 大雁 丹顶鹤 迁徙 湿地",
     desc: "候鸟水鸟常生活在湖泊、湿地和海岸附近，具有迁徙习性。",
-    url: "bird_migrate.html"
+    url: "bird_migrate.html",
+    icon: "🦢"
   },
   {
     name: "珍稀保护鸟类",
     keywords: "珍稀 保护鸟类 朱鹮 丹顶鹤 中华秋沙鸭 濒危",
     desc: "珍稀保护鸟类数量较少，需要加强栖息地保护和人工救助。",
-    url: "bird_rare.html"
+    url: "bird_rare.html",
+    icon: "🐦"
   },
   {
     name: "动物保护",
     keywords: "动物保护 濒危动物 国家一级保护动物 野生动物 救助 公益 生态保护 生物多样性",
     desc: "动物保护专区介绍濒危动物现状、保护知识和公益救助内容。",
-    url: "protect.html"
+    url: "protect.html",
+    icon: "🌱"
   }
 ];
 
@@ -273,9 +340,9 @@ function doSearch() {
 
   if (results.length === 0) {
     searchResult.innerHTML = `
-      <div class="section-title">
-        <h2>未找到相关结果</h2>
-        <p>可以试试搜索：狮子、熊猫、鲸鱼、海豚、老鹰、孔雀、保护</p>
+      <div class="search-panel">
+        <h2>没有找到相关内容</h2>
+        <p>可以试试搜索：狮子、熊猫、鲸鱼、海豚、老鹰、孔雀、保护。</p>
       </div>
     `;
 
@@ -284,19 +351,23 @@ function doSearch() {
   }
 
   searchResult.innerHTML = `
-    <div class="section-title">
-      <h2>🔍 搜索结果</h2>
-      <p>共找到 ${results.length} 个相关内容</p>
-    </div>
+    <div class="search-panel">
+      <div class="section-title">
+        <span>Search Results</span>
+        <h2>🔍 搜索结果</h2>
+        <p>共找到 ${results.length} 个相关内容，点击卡片可进入对应页面。</p>
+      </div>
 
-    <div class="result-box">
-      ${results.map(item => `
-        <div class="result-item">
-          <h3>${item.name}</h3>
-          <p>${item.desc}</p>
-          <a href="${item.url}">进入页面 →</a>
-        </div>
-      `).join("")}
+      <div class="result-grid">
+        ${results.map(item => `
+          <a class="result-card" href="${item.url}">
+            <div class="result-icon">${item.icon}</div>
+            <h3>${item.name}</h3>
+            <p>${item.desc}</p>
+            <span>查看详情 →</span>
+          </a>
+        `).join("")}
+      </div>
     </div>
   `;
 

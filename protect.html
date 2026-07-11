@@ -1,23 +1,1457 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>动物保护</title>
-<link rel="stylesheet" href="style.css">
-</head>
 
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>保护动物专栏 | 守护生命·敬畏自然</title>
+
+    <!-- ==================== 样式 ==================== -->
+    <style>
+        :root {
+            --primary: #2d6a4f;
+            --primary-dark: #1b4332;
+            --primary-light: #40916c;
+            --accent: #d4a373;
+            --accent-warm: #e76f51;
+            --danger: #c1121f;
+            --danger-light: #fff0f0;
+            --bg: #f9f7f3;
+            --bg-cream: #fefae0;
+            --card-bg: #ffffff;
+            --text: #2b2b2b;
+            --text-light: #5c5c5c;
+            --text-muted: #888;
+            --border: #e0dcd5;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+            --shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 20px 48px rgba(0, 0, 0, 0.16);
+            --radius-sm: 8px;
+            --radius: 14px;
+            --radius-lg: 20px;
+            --radius-xl: 24px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-heading: 'Georgia', 'Noto Serif SC', 'STSong', 'Songti SC', 'SimSun', serif;
+            --font-body: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+        }
+
+        /* ========== 顶部导航栏 ========== */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+            transition: var(--transition);
+        }
+        .top-nav.scrolled {
+            box-shadow: var(--shadow);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+        .nav-brand .brand-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #fff;
+            flex-shrink: 0;
+        }
+        .nav-links {
+            display: flex;
+            gap: 6px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--primary);
+            color: #fff;
+        }
+        .nav-back {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: var(--transition);
+        }
+        .nav-back:hover {
+            color: var(--primary);
+        }
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: var(--text);
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+
+        /* ========== 英雄横幅 ========== */
+        .hero-banner {
+            position: relative;
+            width: 100%;
+            min-height: 420px;
+            background: linear-gradient(160deg, #1b4332 0%, #2d6a4f 30%, #40916c 60%, #52b788 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            text-align: center;
+            padding: 60px 24px;
+        }
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 75% 20%, rgba(255, 255, 255, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-banner .hero-particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .hero-banner .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            animation: floatUp 8s infinite ease-in;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(-420px) scale(0.3);
+                opacity: 0;
+            }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+            color: #fff;
+        }
+        .hero-content .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 6px 18px;
+            border-radius: 24px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+        .hero-content h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+            line-height: 1.3;
+        }
+        .hero-content .hero-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            letter-spacing: 1px;
+            line-height: 1.6;
+        }
+        .hero-scroll-indicator {
+            position: absolute;
+            bottom: 20px;
+            z-index: 2;
+            animation: bounceDown 2s infinite;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.8rem;
+        }
+        @keyframes bounceDown {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(10px);
+            }
+        }
+
+        /* ========== 主容器 ========== */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== 区块通用样式 ========== */
+        .section {
+            padding: 60px 0;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-header .section-icon {
+            display: inline-block;
+            font-size: 2.6rem;
+            margin-bottom: 10px;
+        }
+        .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            color: var(--primary-dark);
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .section-header .section-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            margin: 10px auto 14px;
+            border-radius: 2px;
+        }
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1rem;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        /* ========== 筛选按钮（图鉴） ========== */
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+        .filter-btn {
+            padding: 10px 22px;
+            border-radius: 24px;
+            border: 1.5px solid var(--border);
+            background: #fff;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-light);
+            transition: var(--transition);
+            font-family: var(--font-body);
+            white-space: nowrap;
+        }
+        .filter-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: #f0faf4;
+        }
+        .filter-btn.active {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(45, 106, 79, 0.3);
+        }
+
+        /* ========== 图鉴卡片网格 ========== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .animal-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid transparent;
+        }
+        .animal-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-light);
+        }
+        .animal-card .card-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: #e9ecef;
+            flex-shrink: 0;
+        }
+        .animal-card .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .animal-card:hover .card-img-wrapper img {
+            transform: scale(1.08);
+        }
+        .animal-card .card-img-fallback {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            color: #a5d6a7;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .animal-card .card-img-wrapper img.loaded+.card-img-fallback {
+            opacity: 0;
+        }
+        .animal-card .card-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--danger);
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 14px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            z-index: 3;
+            box-shadow: 0 2px 8px rgba(193, 18, 31, 0.4);
+        }
+        .animal-card .card-body {
+            padding: 16px 18px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .animal-card .card-body h3 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+        .animal-card .card-body .scientific-name {
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+        }
+        .animal-card .card-body .info-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            font-size: 0.78rem;
+            color: var(--text-light);
+            margin-top: auto;
+        }
+        .animal-card .card-body .info-tag {
+            background: #f0faf4;
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+        .animal-card .card-body .info-tag.endangered {
+            background: var(--danger-light);
+            color: var(--danger);
+        }
+
+        /* ========== 文章区块 ========== */
+        .article-block {
+            background: var(--card-bg);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 400px;
+        }
+        .article-block.reverse {
+            direction: rtl;
+        }
+        .article-block.reverse>* {
+            direction: ltr;
+        }
+        .article-block .article-img {
+            width: 100%;
+            height: 100%;
+            min-height: 320px;
+            object-fit: cover;
+            background: #e9ecef;
+        }
+        .article-block .article-img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #e9ecef;
+            min-height: 320px;
+        }
+        .article-block .article-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            inset: 0;
+            transition: transform 0.5s ease;
+        }
+        .article-block:hover .article-img-wrapper img {
+            transform: scale(1.04);
+        }
+        .article-block .article-text {
+            padding: 40px 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .article-text h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        .article-text .article-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .article-text p {
+            color: var(--text-light);
+            line-height: 1.85;
+            margin-bottom: 12px;
+        }
+        .article-text .highlight-stat {
+            display: inline-block;
+            background: var(--danger-light);
+            color: var(--danger);
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+        .article-text .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 8px;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+        .article-text .read-more:hover {
+            gap: 10px;
+            color: var(--primary-dark);
+        }
+
+        /* ========== 小知识列表 ========== */
+        .knowledge-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            list-style: none;
+        }
+        .knowledge-item {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 20px 22px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            transition: var(--transition);
+            border-left: 4px solid transparent;
+            cursor: default;
+        }
+        .knowledge-item:hover {
+            border-left-color: var(--primary);
+            box-shadow: var(--shadow);
+            transform: translateX(3px);
+        }
+        .knowledge-item .ki-icon {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background: #f0faf4;
+        }
+        .knowledge-item .ki-content h4 {
+            font-size: 0.95rem;
+            color: var(--primary-dark);
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        .knowledge-item .ki-content p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ========== 公益科普图文区 ========== */
+        .rescue-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .rescue-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+        .rescue-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        .rescue-card .rescue-img-wrap {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            background: #e9ecef;
+            position: relative;
+        }
+        .rescue-card .rescue-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .rescue-card:hover .rescue-img-wrap img {
+            transform: scale(1.06);
+        }
+        .rescue-card .step-number {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            box-shadow: 0 3px 10px rgba(45, 106, 79, 0.4);
+        }
+        .rescue-card .rescue-body {
+            padding: 18px 16px 22px;
+        }
+        .rescue-card .rescue-body h4 {
+            font-family: var(--font-heading);
+            color: var(--primary-dark);
+            margin-bottom: 6px;
+            font-size: 1.05rem;
+        }
+        .rescue-card .rescue-body p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ========== 灯箱 ========== */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.88);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+            cursor: pointer;
+        }
+        .lightbox-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .lightbox-overlay img {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            transform: scale(0.9);
+            transition: transform 0.35s ease;
+            cursor: default;
+        }
+        .lightbox-overlay.active img {
+            transform: scale(1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2.5rem;
+            color: #fff;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+        .lightbox-close:hover {
+            transform: rotate(90deg);
+            color: #ff6b6b;
+        }
+        .lightbox-caption {
+            position: absolute;
+            bottom: 30px;
+            color: #fff;
+            font-size: 1rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 8px 20px;
+            border-radius: 20px;
+            pointer-events: none;
+        }
+
+        /* ========== 页脚 ========== */
+        .column-footer {
+            text-align: center;
+            padding: 40px 24px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 30px;
+        }
+        .column-footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* ========== 回到顶部 ========== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 1.4rem;
+            box-shadow: var(--shadow-lg);
+            z-index: 900;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* ========== Toast提示 ========== */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #333;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 24px;
+            font-size: 0.9rem;
+            z-index: 9999;
+            opacity: 0;
+            transition: all 0.35s ease;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ========== 响应式设计 ========== */
+        @media (max-width: 1024px) {
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .rescue-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .article-block {
+                grid-template-columns: 1fr;
+            }
+            .article-block .article-img-wrapper {
+                min-height: 240px;
+                max-height: 300px;
+            }
+            .article-block .article-text {
+                padding: 28px 24px;
+            }
+            .knowledge-list {
+                grid-template-columns: 1fr;
+            }
+            .nav-links a {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+        }
+        @media (max-width: 640px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .rescue-steps {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .hero-banner {
+                min-height: 300px;
+                padding: 40px 16px;
+            }
+            .hero-content h1 {
+                font-size: 1.6rem;
+                letter-spacing: 1px;
+            }
+            .hero-content .hero-subtitle {
+                font-size: 0.9rem;
+            }
+            .section {
+                padding: 40px 0;
+            }
+            .article-block .article-text {
+                padding: 20px 16px;
+            }
+            .article-text h3 {
+                font-size: 1.2rem;
+            }
+            .top-nav {
+                padding: 0 12px;
+                height: 52px;
+            }
+            .nav-brand {
+                font-size: 1rem;
+                gap: 6px;
+            }
+            .nav-brand .brand-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 1rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .nav-links.mobile-open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 52px;
+                left: 0;
+                right: 0;
+                background: #fff;
+                padding: 12px 16px;
+                box-shadow: var(--shadow-lg);
+                border-radius: 0 0 16px 16px;
+                gap: 2px;
+                z-index: 999;
+            }
+            .nav-links.mobile-open a {
+                display: block;
+                padding: 10px 14px;
+                border-radius: 8px;
+                text-align: center;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .filter-buttons {
+                gap: 6px;
+            }
+            .filter-btn {
+                padding: 7px 14px;
+                font-size: 0.78rem;
+            }
+            .back-to-top {
+                bottom: 20px;
+                right: 16px;
+                width: 38px;
+                height: 38px;
+                font-size: 1.1rem;
+            }
+            .lightbox-close {
+                top: 10px;
+                right: 16px;
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
 <body>
 
-<header><h1>🌱 动物保护</h1></header>
+    <!-- ==================== 顶部导航 ==================== -->
+    <nav class="top-nav" id="topNav">
+        <a href="/blog" class="nav-brand" title="返回博客主页">
+            <span class="brand-icon">🌿</span>
+            <span>自然笔记</span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#gallery" class="active">🦅 动物图鉴</a></li>
+            <li><a href="#endangered">📊 濒危现状</a></li>
+            <li><a href="#knowledge">💡 保护小知识</a></li>
+            <li><a href="#rescue">🩺 救助科普</a></li>
+        </ul>
+        <a href="/blog" class="nav-back" title="返回博客主页">← 返回主页</a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="菜单">☰</button>
+    </nav>
 
-<nav>
-  <a href="index.html">首页</a>
-</nav>
+    <!-- ==================== 英雄横幅 ==================== -->
+    <header class="hero-banner" id="hero">
+        <div class="hero-particles" id="heroParticles"></div>
+        <div class="hero-content">
+            <span class="hero-badge">· 保护动物专栏 ·</span>
+            <h1>守护生命<br>敬畏自然</h1>
+            <p class="hero-subtitle">
+                每一种生灵都是地球史诗中不可替代的篇章。<br>
+                了解它们、守护它们，从此刻开始。
+            </p>
+        </div>
+        <div class="hero-scroll-indicator" onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})" title="向下滚动">
+            ⌄
+        </div>
+    </header>
 
-<div class="intro">
-  <h2>保护野生动物</h2>
-  <p>保护生态环境，从我们每个人做起。</p>
-</div>
+    <!-- ==================== 主容器 ==================== -->
+    <main class="main-container">
 
+        <!-- ========== 第一部分：国家一级保护动物图鉴 ========== -->
+        <section class="section" id="gallery">
+            <div class="section-header">
+                <span class="section-icon">📖</span>
+                <h2>国家一级保护动物图鉴</h2>
+                <div class="section-divider"></div>
+                <p>以下均为中国《国家重点保护野生动物名录》中的一级保护物种，非法捕猎、杀害或交易将受到法律严惩。</p>
+            </div>
+
+            <!-- 筛选按钮 -->
+            <div class="filter-buttons" id="filterButtons">
+                <button class="filter-btn active" data-filter="all">🦁 全部</button>
+                <button class="filter-btn" data-filter="mammal">🐾 哺乳类</button>
+                <button class="filter-btn" data-filter="bird">🐦 鸟类</button>
+                <button class="filter-btn" data-filter="reptile">🦎 爬行类</button>
+                <button class="filter-btn" data-filter="fish">🐟 鱼类</button>
+            </div>
+
+            <!-- 图鉴卡片网格 -->
+            <div class="cards-grid" id="cardsGrid">
+                <!-- 卡片数据通过JS动态渲染 -->
+            </div>
+        </section>
+
+        <!-- ========== 第二部分：濒危动物现状 ========== -->
+        <section class="section" id="endangered">
+            <div class="section-header">
+                <span class="section-icon">📊</span>
+                <h2>濒危动物现状</h2>
+                <div class="section-divider"></div>
+                <p>全球生物多样性正面临前所未有的危机，以下数据揭示了我们亟需关注的事实。</p>
+            </div>
+            <div class="article-block">
+                <div class="article-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1501706362039-c06b2d715385?w=800&h=500&fit=crop&crop=entropy"
+                    alt="濒危野生动物保护"
+                    loading="lazy"
+                    onerror="this.parentElement.style.background='linear-gradient(135deg, #f5e6d3, #e8d5c4)'; this.style.display='none';">
+                </div>
+                <div class="article-text">
+                    <h3>🔴 正在消失的生命图谱</h3>
+                    <div class="article-meta">
+                        <span>📅 2026年更新</span>
+                        <span>📚 综合IUCN红色名录</span>
+                        <span>🌏 全球视角</span>
+                    </div>
+                    <p>
+                        根据世界自然保护联盟（IUCN）最新评估，全球约有<span class="highlight-stat">超过4.4万个物种</span>面临灭绝威胁，占已评估物种的<strong>28%</strong>。这意味着近三分之一的已知生物正站在悬崖边缘。
+                    </p>
+                    <p>
+                        在中国，国家一级保护动物名录中的物种多数处于"濒危"或"极危"状态。<strong>栖息地丧失</strong>是最大的威胁因素——森林砍伐、湿地退化、草原沙化使得无数生灵失去了家园。此外，<strong>非法盗猎</strong>和<strong>气候变化</strong>也在加速物种的消亡。
+                    </p>
+                    <p>
+                        值得欣慰的是，通过多年的保护努力，<strong>大熊猫</strong>的受威胁等级已从"濒危"降为"易危"，<strong>藏羚羊</strong>种群数量也显著恢复。这证明——<em>只要我们行动起来，改变就有可能发生。</em>
+                    </p>
+                    <a href="#rescue" class="read-more">了解如何参与保护 →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 第三部分：野生动物保护小知识 ========== -->
+        <section class="section" id="knowledge">
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h2>野生动物保护小知识</h2>
+                <div class="section-divider"></div>
+                <p>在日常生活中，每个人都可以成为野生动物的守护者。以下是一些实用的保护知识。</p>
+            </div>
+            <ul class="knowledge-list">
+                <li class="knowledge-item">
+                    <span class="ki-icon">🚫</span>
+                    <div class="ki-content">
+                        <h4>拒绝野味，从餐桌做起</h4>
+                        <p>食用野生动物不仅违法，还可能带来未知的病毒和寄生虫风险。选择正规养殖的肉类，既安全又合法。</p>
+                    </div>
+                </li>
+                <li class="knowledge-item">
+                    <span class="ki-icon">📵</span>
+                    <div class="ki-content">
+                        <h4>遇到野生动物，保持距离</h4>
+                        <p>在野外遇到野生动物时，不要靠近、投喂或大声喧哗。保持至少50米的安全距离，用长焦镜头代替"亲密接触"。</p>
+                    </div>
+                </li>
+                <li class="knowledge-item">
+                    <span class="ki-icon">🛍️</span>
+                    <div class="ki-content">
+                        <h4>不购买野生动物制品</h4>
+                        <p>象牙、犀角、虎骨、穿山甲鳞片等制品背后是血腥的盗猎链条。没有买卖，就没有杀害。</p>
+                    </div>
+                </li>
+                <li class="knowledge-item">
+                    <span class="ki-icon">🌳</span>
+                    <div class="ki-content">
+                        <h4>保护栖息地就是保护它们</h4>
+                        <p>减少一次性塑料使用、节约纸张、支持可持续林业产品，这些日常选择都在间接保护野生动物的家园。</p>
+                    </div>
+                </li>
+                <li class="knowledge-item">
+                    <span class="ki-icon">📞</span>
+                    <div class="ki-content">
+                        <h4>发现受伤动物，正确求助</h4>
+                        <p>不要擅自处理受伤的野生动物。及时拨打当地林业部门或野生动物救助站电话，让专业人员介入处理。</p>
+                    </div>
+                </li>
+                <li class="knowledge-item">
+                    <span class="ki-icon">📢</span>
+                    <div class="ki-content">
+                        <h4>传播保护理念，影响身边人</h4>
+                        <p>分享保护知识、转发科普文章、参与志愿者活动。一个人的力量有限，但众人的觉醒能改变世界。</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- ========== 第四部分：动物救助公益科普 ========== -->
+        <section class="section" id="rescue">
+            <div class="section-header">
+                <span class="section-icon">🩺</span>
+                <h2>动物救助公益科普</h2>
+                <div class="section-divider"></div>
+                <p>遇到需要帮助的野生动物时，正确的救助方式至关重要。以下是一般救助流程参考。</p>
+            </div>
+            <div class="rescue-steps">
+                <!-- 步骤1 -->
+                <div class="rescue-card">
+                    <div class="rescue-img-wrap">
+                        <span class="step-number">1</span>
+                        <img src="https://images.unsplash.com/photo-1535083783855-76ae62b2914e?w=600&h=400&fit=crop"
+                        alt="观察野生动物"
+                        loading="lazy"
+                        onerror="this.parentElement.style.background='linear-gradient(135deg, #e3f2fd, #bbdefb)'; this.style.display='none';">
+                    </div>
+                    <div class="rescue-body">
+                        <h4>🔍 观察与评估</h4>
+                        <p>首先保持安全距离，观察动物是否真的需要帮助。幼鸟离巢学飞、野兔蹲伏不动等情况属于正常现象，<strong>不要盲目干预</strong>。</p>
+                    </div>
+                </div>
+                <!-- 步骤2 -->
+                <div class="rescue-card">
+                    <div class="rescue-img-wrap">
+                        <span class="step-number">2</span>
+                        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&h=400&fit=crop"
+                        alt="联系野生动物救助"
+                        loading="lazy"
+                        onerror="this.parentElement.style.background='linear-gradient(135deg, #fff3e0, #ffe0b2)'; this.style.display='none';">
+                    </div>
+                    <div class="rescue-body">
+                        <h4>📞 联系专业机构</h4>
+                        <p>拨打当地<strong>林业和草原局</strong>或<strong>野生动物救护中心</strong>电话。描述动物状况和位置，听从专业指导，不要自行处理。</p>
+                    </div>
+                </div>
+                <!-- 步骤3 -->
+                <div class="rescue-card">
+                    <div class="rescue-img-wrap">
+                        <span class="step-number">3</span>
+                        <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&h=400&fit=crop"
+                        alt="临时安置受伤动物"
+                        loading="lazy"
+                        onerror="this.parentElement.style.background='linear-gradient(135deg, #e8f5e9, #c8e6c9)'; this.style.display='none';">
+                    </div>
+                    <div class="rescue-body">
+                        <h4>🏠 安全临时安置</h4>
+                        <p>在专业人员到达前，将动物安置在<strong>通风、黑暗、安静</strong>的纸箱中，避免光线刺激和噪音干扰。提供少量清水但<strong>不要强行喂食</strong>。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 补充说明文章 -->
+            <div class="article-block reverse" style="margin-top: 32px;">
+                <div class="article-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1564760290292-23341e4df6ec?w=800&h=500&fit=crop"
+                    alt="野生动物救助中心"
+                    loading="lazy"
+                    onerror="this.parentElement.style.background='linear-gradient(135deg, #e8f0fe, #d0e0f8)'; this.style.display='none';">
+                </div>
+                <div class="article-text">
+                    <h3>🏥 救助≠收养</h3>
+                    <div class="article-meta">
+                        <span>📅 2026年</span>
+                        <span>🩺 公益科普</span>
+                    </div>
+                    <p>
+                        <strong>重要提醒：</strong>野生动物属于大自然，<span class="highlight-stat">个人私自饲养国家保护动物属于违法行为</span>。救助的最终目标是让动物恢复健康后<strong>重返自然</strong>，而非将其据为己有。
+                    </p>
+                    <p>
+                        如果您发现有人在网络上炫耀或贩卖珍稀野生动物，请立即向<strong>公安机关</strong>或<strong>市场监管部门</strong>举报。每一次举报，都是在为保护事业贡献力量。
+                    </p>
+                    <p>
+                        目前全国多地已建立<strong>野生动物救护站</strong>，它们为受伤、迷途、被遗弃的野生动物提供专业救治和康复训练。您可以通过官方渠道了解附近的救护站点，成为志愿者或捐赠支持。
+                    </p>
+                    <a href="#" class="read-more" onclick="showToast('感谢您的关注！请通过当地林业部门了解最近的救护站点。');return false;">🔗 查找附近救护站点 →</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== 页脚 ==================== -->
+    <footer class="column-footer">
+        <p>🌍 保护动物专栏 · 守护每一个生命 | <a href="/blog">返回博客主页</a></p>
+        <p style="font-size:0.75rem;margin-top:4px;">内容仅供参考，具体救助操作请遵循当地专业机构指导。保护野生动物，人人有责。</p>
+    </footer>
+
+    <!-- ==================== 灯箱 ==================== -->
+    <div class="lightbox-overlay" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose" aria-label="关闭">✕</button>
+        <img src="" alt="查看大图" id="lightboxImg">
+        <span class="lightbox-caption" id="lightboxCaption"></span>
+    </div>
+
+    <!-- ==================== 回到顶部 ==================== -->
+    <button class="back-to-top" id="backToTop" title="回到顶部" aria-label="回到顶部">↑</button>
+
+    <!-- ==================== Toast ==================== -->
+    <div class="toast" id="toast"></div>
+
+    <!-- ==================== JavaScript ==================== -->
+    <script>
+        (function() {
+            // ============ 动物数据（已按用户要求替换多个物种图片） ============
+            const animalsData = [{
+                id: 'giant-panda',
+                name: '大熊猫',
+                scientific: 'Ailuropoda melanoleuca',
+                category: 'mammal',
+                emoji: '🐼',
+                habitat: '四川、陕西、甘肃',
+                population: '约1,864只（野生）',
+                status: '易危（降级）',
+                statusClass: '',
+                description: '国宝级物种，中国特有。经数十年保护，种群稳步增长。',
+                imageUrl: 'https://c-ssl.duitang.com/uploads/item/201910/13/20191013224426_bucog.jpeg'
+            }, {
+                id: 'siberian-tiger',
+                name: '东北虎',
+                scientific: 'Panthera tigris altaica',
+                category: 'mammal',
+                emoji: '🐯',
+                habitat: '黑龙江、吉林',
+                population: '约60只（中国境内野生）',
+                status: '极危',
+                statusClass: 'endangered',
+                description: '世界上最大的猫科动物之一，中国野生种群极度稀少。',
+                imageUrl: 'https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=600&h=400&fit=crop'
+            }, {
+                id: 'tibetan-antelope',
+                name: '藏羚羊',
+                scientific: 'Pantholops hodgsonii',
+                category: 'mammal',
+                emoji: '🐐',
+                habitat: '青藏高原',
+                population: '约30万只（恢复中）',
+                status: '近危',
+                statusClass: '',
+                description: '高原精灵，因沙图什披肩盗猎曾濒临灭绝，保护成效显著。',
+                // 已替换为用户指定链接
+                imageUrl: 'https://c-ssl.duitang.com/uploads/blog/202204/23/20220423121144_3acf6.jpeg'
+            }, {
+                id: 'golden-monkey',
+                name: '川金丝猴',
+                scientific: 'Rhinopithecus roxellana',
+                category: 'mammal',
+                emoji: '🐵',
+                habitat: '四川、湖北、陕西',
+                population: '约2万只',
+                status: '濒危',
+                statusClass: 'endangered',
+                description: '金色毛发引人注目，生活在高海拔森林中的灵长类瑰宝。',
+                imageUrl: 'https://images.unsplash.com/photo-1540573133985-87b6da6d54a9?w=600&h=400&fit=crop'
+            }, {
+                id: 'red-crowned-crane',
+                name: '丹顶鹤',
+                scientific: 'Grus japonensis',
+                category: 'bird',
+                emoji: '🦩',
+                habitat: '东北湿地、江苏盐城',
+                population: '约1,500只（中国越冬种群）',
+                status: '濒危',
+                statusClass: 'endangered',
+                description: '象征长寿与吉祥，湿地生态系统的旗舰物种。',
+                // 已替换为用户指定链接
+                imageUrl: 'https://c-ssl.duitang.com/uploads/item/201909/11/20190911225211_cywvg.jpg'
+            }, {
+                id: 'crested-ibis',
+                name: '朱鹮',
+                scientific: 'Nipponia nippon',
+                category: 'bird',
+                emoji: '🐦',
+                habitat: '陕西洋县及周边',
+                population: '约7,000只（全球）',
+                status: '濒危',
+                statusClass: 'endangered',
+                description: '从仅存7只到数千只，是中国保护生物学最成功的案例之一。',
+                // 已替换为用户指定链接
+                imageUrl: 'https://c-ssl.duitang.com/uploads/item/201312/30/20131230123024_xZZB8.jpeg'
+            }, {
+                id: 'chinese-alligator',
+                name: '扬子鳄',
+                scientific: 'Alligator sinensis',
+                category: 'reptile',
+                emoji: '🐊',
+                habitat: '长江中下游',
+                population: '约200只（野生）',
+                status: '极危',
+                statusClass: 'endangered',
+                description: '中国特有的小型鳄鱼，野生种群极度濒危。',
+                // 已替换为用户指定链接
+                imageUrl: 'https://c-ssl.duitang.com/uploads/item/201610/02/20161002225752_P2Nre.jpeg'
+            }, {
+                id: 'chinese-sturgeon',
+                name: '中华鲟',
+                scientific: 'Acipenser sinensis',
+                category: 'fish',
+                emoji: '🐟',
+                habitat: '长江流域',
+                population: '野生繁殖几乎中断',
+                status: '极危',
+                statusClass: 'endangered',
+                description: '古老的洄游鱼类，葛洲坝等水利工程对其洄游路线造成严重影响。',
+                // 已替换为用户指定链接
+                imageUrl: 'https://vcg03.cfp.cn/creative/vcg/800/new/VCG211378374641.jpg'
+            }];
+
+            // ============ 渲染图鉴卡片 ============
+            const cardsGrid = document.getElementById('cardsGrid');
+
+            function renderCards(filter = 'all') {
+                const filtered = filter === 'all' ?
+                    animalsData :
+                    animalsData.filter(a => a.category === filter);
+
+                cardsGrid.innerHTML = filtered.map(animal => `
+                    <div class="animal-card" data-category="${animal.category}" data-id="${animal.id}"
+                         onclick="openLightbox('${animal.imageUrl.replace('w=600&h=400', 'w=1200&h=800')}', '${animal.name} —— ${animal.description}')">
+                        <div class="card-img-wrapper">
+                            <img src="${animal.imageUrl}"
+                                 alt="${animal.name}"
+                                 loading="lazy"
+                                 class="card-img-loadable"
+                                 onerror="this.style.opacity='0';this.parentElement.querySelector('.card-img-fallback').style.opacity='1';"
+                                 onload="this.classList.add('loaded');">
+                            <span class="card-img-fallback">${animal.emoji}</span>
+                            <span class="card-badge">一级保护</span>
+                        </div>
+                        <div class="card-body">
+                            <h3>${animal.emoji} ${animal.name}</h3>
+                            <span class="scientific-name">${animal.scientific}</span>
+                            <div class="info-row">
+                                <span class="info-tag">📍 ${animal.habitat}</span>
+                                <span class="info-tag ${animal.statusClass}">⚠ ${animal.status}</span>
+                            </div>
+                            <div class="info-row" style="margin-top:6px;">
+                                <span style="font-size:0.75rem;color:var(--text-muted);">种群：${animal.population}</span>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // 初始渲染
+            renderCards('all');
+
+            // ============ 筛选功能 ============
+            const filterButtons = document.getElementById('filterButtons');
+            filterButtons.addEventListener('click', function(e) {
+                const btn = e.target.closest('.filter-btn');
+                if (!btn) return;
+
+                filterButtons.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+                renderCards(filter);
+
+                const cards = cardsGrid.querySelectorAll('.animal-card');
+                cards.forEach((card, i) => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = 'all 0.4s ease';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, i * 60);
+                });
+            });
+
+            // ============ 灯箱功能 ============
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+            const lightboxClose = document.getElementById('lightboxClose');
+
+            window.openLightbox = function(src, caption) {
+                lightboxImg.src = src;
+                lightboxCaption.textContent = caption || '';
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+                setTimeout(() => {
+                    lightboxImg.src = '';
+                }, 350);
+            }
+
+            lightboxClose.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeLightbox();
+            });
+
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    closeLightbox();
+                }
+            });
+
+            // ============ Toast ============
+            const toast = document.getElementById('toast');
+            let toastTimer;
+
+            window.showToast = function(message) {
+                clearTimeout(toastTimer);
+                toast.textContent = message;
+                toast.classList.add('show');
+                toastTimer = setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2500);
+            };
+
+            // ============ 回到顶部按钮 ============
+            const backToTop = document.getElementById('backToTop');
+
+            function toggleBackToTop() {
+                if (window.scrollY > 500) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            }
+
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            window.addEventListener('scroll', toggleBackToTop, { passive: true });
+
+            // ============ 顶部导航滚动阴影 ============
+            const topNav = document.getElementById('topNav');
+
+            function updateNavShadow() {
+                if (window.scrollY > 10) {
+                    topNav.classList.add('scrolled');
+                } else {
+                    topNav.classList.remove('scrolled');
+                }
+            }
+            window.addEventListener('scroll', updateNavShadow, { passive: true });
+
+            // ============ 导航高亮 ============
+            const navLinksAll = document.querySelectorAll('.nav-links a');
+            const sections = document.querySelectorAll('section[id]');
+
+            function updateActiveNav() {
+                let currentSection = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (window.scrollY >= sectionTop) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                navLinksAll.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            window.addEventListener('scroll', updateActiveNav, { passive: true });
+
+            // ============ 移动端菜单 ============
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('mobile-open');
+                mobileMenuBtn.textContent = navLinks.classList.contains('mobile-open') ? '✕' : '☰';
+            });
+
+            navLinks.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A' && navLinks.classList.contains('mobile-open')) {
+                    navLinks.classList.remove('mobile-open');
+                    mobileMenuBtn.textContent = '☰';
+                }
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!navLinks.contains(e.target) && e.target !== mobileMenuBtn && navLinks
+                    .classList.contains('mobile-open')) {
+                    navLinks.classList.remove('mobile-open');
+                    mobileMenuBtn.textContent = '☰';
+                }
+            });
+
+            // ============ 英雄横幅粒子效果 ============
+            const heroParticles = document.getElementById('heroParticles');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('span');
+                particle.classList.add('particle');
+                const size = Math.random() * 8 + 3;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.bottom = '0px';
+                particle.style.animationDuration = (Math.random() * 6 + 6) + 's';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                heroParticles.appendChild(particle);
+            }
+
+            // ============ 初始化 ============
+            toggleBackToTop();
+            updateNavShadow();
+            updateActiveNav();
+
+            console.log('🌿 保护动物专栏已就绪');
+            console.log('   📖 国家一级保护动物图鉴 — ' + animalsData.length + ' 个物种（图片已按需求替换）');
+            console.log('   🐼 大熊猫、藏羚羊、丹顶鹤、朱鹮、扬子鳄、中华鲟已使用指定图片');
+            console.log('   📊 濒危动物现状文章');
+            console.log('   💡 野生动物保护小知识 — 6 条');
+            console.log('   🩺 动物救助公益科普 — 3 步流程 + 补充文章');
+        })();
+    </script>
 </body>
 </html>

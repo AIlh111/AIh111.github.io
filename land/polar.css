@@ -1,0 +1,312 @@
+/*==================================================
+                极地动物专题 polar.css
+==================================================*/
+/* ========= 全局通用样式 ========= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+html{
+    scroll-behavior:smooth;
+}
+body{
+    font-family:"Microsoft YaHei",sans-serif;
+    background:#0f172a;
+    color:#e2e8f0;
+    overflow-x:hidden;
+}
+/* 全局图片统一重置 */
+img{
+    max-width:100%;
+    display:block;
+    transition:.35s;
+}
+img:hover{
+    transform:scale(1.03);
+}
+/* ========= 顶部导航栏 ========= */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 40px;
+  background:rgba(15,23,42,0.95);
+  color:white;
+  transition:0.3s;
+  z-index:999;
+}
+nav.scrolled{
+  background:#1e2937;
+  box-shadow:0 4px 15px rgba(0,0,0,0.5);
+}
+nav a{
+  color:white;
+  margin:0 12px;
+  text-decoration:none;
+  font-weight:bold;
+  transition:0.3s;
+}
+nav a:hover{
+  color:#86efac;
+}
+nav a.active{
+  color:#86efac;
+  font-weight:bold;
+}
+/* ========= 极地专题专属Banner ========= */
+.polar-banner{
+    position:relative;
+    width:100%;
+    min-height:70vh;
+    padding-top:80px;
+    background:linear-gradient(rgba(20,30,50,.5),rgba(40,60,80,.6)),url("../images/polar.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+.banner-mask{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:linear-gradient(rgba(15,23,42,.4),rgba(34,139,34,.3));
+    z-index:1;
+}
+.banner-content{
+    position:relative;
+    z-index:2;
+    width:100%;
+    text-align:center;
+    color:white;
+    padding:80px 20px 40px;
+}
+.banner-content h1{
+    font-size:58px;
+    letter-spacing:3px;
+    margin-bottom:20px;
+    text-shadow:0 6px 18px rgba(0,0,0,.6);
+    color:#86efac;
+}
+.banner-content p{
+    font-size:22px;
+    letter-spacing:1.5px;
+    text-shadow:0 3px 10px rgba(0,0,0,.5);
+    max-width:800px;
+    margin:0 auto;
+}
+/* 通用板块标题 */
+.common-title{
+    text-align:center;
+    color:#86efac;
+    font-size:42px;
+    margin-bottom:15px;
+}
+.line{
+    width:90px;
+    height:4px;
+    margin:0 auto 35px;
+    border-radius:5px;
+    background:#4ade80;
+}
+/* 基础介绍板块 */
+.intro{
+    width:100%;
+    background:#1e2937;
+    padding:80px 15%;
+    text-align:center;
+}
+.intro p{
+    color:#cbd5e1;
+    font-size:18px;
+    line-height:36px;
+    max-width:900px;
+    margin:0 auto;
+}
+/* ========= 左右交替图文板块 ========= */
+.polar-zone {
+    width: 100%;
+    background: #17212f;
+    padding: 80px 15%;
+}
+.polar-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+.polar-features > div {
+    background: #1e2937;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.4);
+}
+/* 特征板块 */
+.polar-feature{
+    width:100%;
+    background:#17212f;
+    padding:80px 15%;
+}
+.feature-box{
+    display:flex;
+    flex-wrap:wrap;
+    gap:50px;
+    align-items:center;
+    margin-top:30px;
+}
+.feature-text{
+    flex:1;
+    min-width:320px;
+}
+.feature-text h3{
+    color:#86efac;
+    font-size:26px;
+    margin-bottom:20px;
+}
+.feature-text p{
+    font-size:17px;
+    line-height:34px;
+    color:#cbd5e1;
+    margin-bottom:20px;
+}
+.feature-list{
+    margin-top:15px;
+}
+.feature-list li{
+    list-style:none;
+    font-size:16.5px;
+    line-height:32px;
+    color:#cbd5e1;
+    margin-bottom:14px;
+    padding-left:24px;
+    position:relative;
+}
+.feature-list li::before{
+    content:"→";
+    color:#4ade80;
+    position:absolute;
+    left:0;
+    font-size:18px;
+}
+.feature-img{
+    flex:1;
+    min-width:320px;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 12px 35px rgba(0,0,0,.5);
+}
+.feature-img img{
+    width:100%;
+    transition:.5s;
+}
+.feature-img img:hover{
+    transform:scale(1.04);
+}
+/* 代表物种卡片 */
+.polar-species{
+    width:100%;
+    background:#1e2937;
+    padding:80px 15%;
+}
+.species-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+    margin-top:40px;
+}
+.species-card{
+    background:#17212f;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,.4);
+    transition:.4s;
+}
+.species-card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 20px 45px rgba(134,239,172,0.2);
+}
+.species-card img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+}
+.species-content{
+    padding:28px;
+}
+.species-content h3{
+    color:#86efac;
+    font-size:23px;
+    margin-bottom:14px;
+}
+.species-content p{
+    color:#cbd5e1;
+    font-size:16px;
+    line-height:30px;
+}
+/* 生态价值板块 */
+.polar-eco{
+    width:100%;
+    background:#17212f;
+    padding:80px 15%;
+    text-align:center;
+}
+.eco-desc{
+    max-width:950px;
+    margin:0 auto;
+    font-size:17.5px;
+    line-height:36px;
+    color:#cbd5e1;
+}
+/* 页脚 */
+footer{
+    background:#0a0f1c;
+    color:#64748b;
+    text-align:center;
+    padding:35px;
+}
+/* 返回顶部 */
+.top-btn{
+    position:fixed;
+    right:35px;
+    bottom:40px;
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    background:#4ade80;
+    color:#0f172a;
+    text-align:center;
+    line-height:58px;
+    font-size:26px;
+    text-decoration:none;
+    box-shadow:0 8px 20px rgba(0,0,0,.5);
+    transition:.35s;
+    z-index:999;
+}
+.top-btn:hover{
+    background:#86efac;
+    transform:translateY(-8px);
+}
+/* ========= 自适应 ========= */
+@media screen and (max-width:1200px){
+    .intro,.polar-zone,.polar-feature,.polar-species,.polar-eco{
+        padding:60px 8%;
+    }
+}
+@media screen and (max-width:992px){
+    .banner-content h1{font-size:48px;}
+    .banner-content p{font-size:20px;}
+}
+@media screen and (max-width:768px){
+    nav{
+        flex-direction:column;
+        padding:15px;
+        gap:12px;
+    }
+}
+@media screen and (max-width:480px){
+    .banner-content h1{font-size:34px;}
+    .common-title{font-size:30px;}
+}

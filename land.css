@@ -165,7 +165,14 @@ nav a:hover, nav a.active {
     font-size:18px;
     line-height:36px;
 }
-
+.land-showcase {
+    width: 100%;
+    min-height: 500px;
+    background: url("land/images/savanna.jpg");  /* ← 图片名填这里 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 /* 页脚 */
 footer {
     background:#0a0f1c;
